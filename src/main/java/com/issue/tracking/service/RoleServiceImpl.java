@@ -24,5 +24,13 @@ public class RoleServiceImpl implements RoleService {
 	public Role findRoleById(Integer id) {
 		return roleRepository.findRoleById(id);
 	}
+	@Override
+	public void remove(Integer id) {
+		roleRepository.remove(id);
+	}
+	@Override
+	public boolean update(Role role) {
+		return roleRepository.update(role);
+	}
 
 }

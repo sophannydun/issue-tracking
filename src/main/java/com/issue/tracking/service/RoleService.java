@@ -8,4 +8,6 @@ public interface RoleService {
 	List<Role> getAllRoles();
 	public boolean save(Role role);
 	public Role findRoleById(Integer id);
+	public void remove(Integer id);
+	public boolean update(Role role);
 }
