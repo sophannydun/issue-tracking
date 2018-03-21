@@ -1,6 +1,6 @@
 package com.issue.tracking.model;
 
-import java.util.Date;
+import java.sql.Timestamp;
 
 public class Role {
 	private int roleID;
@@ -8,21 +8,30 @@ public class Role {
 	private String roleCode;
 	private String createBy;
 	private String updateBy;
-	private String createDate;
-	private String updateDate;
+	private Timestamp createDate;
+	private Timestamp updateDate;
 	
-	public Role(int roleID, String roleName, String roleCode, String createBy, String updateBy, String createDate,
-			String updateDate) {
+	public Role(int roleID, String roleName, String roleCode, String createBy, String updateBy, Timestamp date,
+			Timestamp date2) {
 		super();
 		this.roleID = roleID;
 		this.roleName = roleName;
 		this.roleCode = roleCode;
 		this.createBy = createBy;
 		this.updateBy = updateBy;
-		this.createDate = createDate;
-		this.updateDate = updateDate;
+		this.createDate = date;
+		this.updateDate = date2;
 	}
-
+	public Role( String roleName, String roleCode, String createBy, String updateBy, Timestamp date,
+			Timestamp date2) {
+		super();
+		this.roleName = roleName;
+		this.roleCode = roleCode;
+		this.createBy = createBy;
+		this.updateBy = updateBy;
+		this.createDate = date;
+		this.updateDate = date2;
+	}
 	public Role() {
 		super();
 	}
@@ -67,19 +76,19 @@ public class Role {
 		this.updateBy = updateBy;
 	}
 
-	public String getCreateDate() {
+	public Timestamp getCreateDate() {
 		return createDate;
 	}
 
-	public void setCreateDate(String createDate) {
+	public void setCreateDate(Timestamp createDate) {
 		this.createDate = createDate;
 	}
 
-	public String getUpdateDate() {
+	public Timestamp getUpdateDate() {
 		return updateDate;
 	}
 
-	public void setUpdateDate(String updateDate) {
+	public void setUpdateDate(Timestamp updateDate) {
 		this.updateDate = updateDate;
 	}
 

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>DataTables | Gentelella</title>
+   	<th:block th:replace="fragments/style"></th:block>
+  </head>
+
+  <body class="nav-md">
+    <div class="container body">
+      <div class="main_container">
+      <!-- include from fragment -->
+        <div class="col-md-3 left_col" th:replace="fragments/menusidebar :: menu-sidebar">
+         
+        </div>
+
+        <!-- top navigation -->
+        <!-- <div class="top_nav" th:replace="fragments/topnavigation"> -->
+        <div class="top_nav" th:replace="fragments/topnavigation :: top-navigation">
+            
+        </div>
+        <!-- /top navigation -->
+
+        <!-- page content -->
+        <div class="right_col" role="main" layout:fragment="content">
+        	<h3>hello from layout</h3>
+          <!-- content body goes here using layout -->
+   		</div>
+        <!-- /page content -->
+
+        <!-- footer content -->
+        <footer th:replace="fragments/pagefooter :: page-footer">
+         
+        </footer>
+        <!-- /footer content -->
+      </div>
+    </div>
+    
+    <th:block th:replace="fragments/script"></th:block>
+  </body>
+</html>

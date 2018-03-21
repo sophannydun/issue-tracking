@@ -26,4 +26,9 @@ public class FormController {
 	    public String tables_dynamic(){
 	        return "tables_dynamic";
 	    }
+	    @RequestMapping("/tables")
+	    public String tables(){
+	        return "tables";
+	    }
+	    
 }
