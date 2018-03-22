@@ -72,10 +72,10 @@
 										<th>Role ID</th>
 										<th>Role Name</th>
 										<th>Role Code</th>
-										<th>create By</th>
-										<th>update By</th>
-										<th>create Date</th>
-										<th>update Date</th>
+										<th>Create By</th>
+										<th>Update By</th>
+										<th>Create Date</th>
+										<th>Update Date</th>
 									</tr>
 								</thead>
 								<tbody th:each="role: ${roles}">
@@ -85,21 +85,22 @@
 										<td th:text="${role.roleCode}"></td>
 										<td th:text="${role.createBy}">1</td>
 										<td th:text="${role.updateBy}">A</td>
-										<td th:text="${role.createDate}"></td>
+										<!-- <td th:text="${role.createDate}"></td> -->
 										<td th:text="${#dates.format(role.createDate, 'dd-MMM-yyyy')}"></td>
-										<td th:text="${role.updateDate}"></td>
+										<!-- <td th:text="${role.updateDate}"></td> -->
+										<td th:text="${#dates.format(role.updateDate, 'dd-MMM-yyyy')}"></td>
 										
-										<!-- <td>
+										<td>
 											<form th:action="@{/role/remove}" th:method="delete">
-												<input type="hidden" name="_method" value="DELETE">
-												<a class="btn btn-default" th:href="@{/user/{id}(id=${user.id})}">View</a>
+												<!-- <input type="hidden" name="_method" value="DELETE"> -->
+												<a class="btn btn-default" th:href="@{/role/{id}(id=${role.roleID})}">View</a>
 												<span>
-													<input type="hidden" name="id" th:value="${user.id}"/>
+													<input type="hidden" name="id" th:value="${role.roleID}"/>
 													<input class="btn btn-danger" type="submit" value="Remove"/>
 												</span>
-												<a class="btn btn-warning" th:href="@{/user/edit(id=${user.id})}">Edit</a>
+												<a class="btn btn-warning" th:href="@{/role/edit(id=${role.roleID})}">Edit</a>
 											</form>
-										</td> -->
+										</td>
 									</tr>
 								</tbody>
 							</table>

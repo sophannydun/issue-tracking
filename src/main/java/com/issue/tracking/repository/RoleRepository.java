@@ -13,20 +13,20 @@ import com.issue.tracking.model.Role;
 
 @Repository
 public interface RoleRepository {
-	@Select("select * from tblrole")
+	@Select("select * from tb_role")
 	public List<Role> findAll();
 	
-	@Insert("INSERT INTO `tblrole`(`roleName`, `roleCode`, `createBy`, `updateBy`, `createDate`, `updateDate`) "
+	@Insert("INSERT INTO `tb_role`(`roleName`, `roleCode`, `createBy`, `updateBy`, `createDate`, `updateDate`) "
 			+ "VALUES (#{roleName},#{roleCode},#{createBy},#{updateBy},#{createDate},#{updateDate})")
 	public boolean save(Role role);
 	
-	@Select("SELECT `roleID`, `roleName`, `roleCode`, `createBy`, `updateBy`, `createDate`, `updateDate` FROM `tblrole` WHERE roleID=#{id}")
+	@Select("SELECT `roleID`, `roleName`, `roleCode`, `createBy`, `updateBy`, `createDate`, `updateDate` FROM `tb_role` WHERE roleID=#{id}")
 	public Role findRoleById(Integer id);
 	
-	@Delete("DELETE FROM tblrole WHERE roleID=#{id}")
+	@Delete("DELETE FROM tb_role WHERE roleID=#{id}")
 	public boolean remove(@Param("id") Integer id);
 	
-	@Update("UPDATE `tblrole` SET `roleName`=#{roleName},`roleCode`=#{roleCode},`createBy`=#{createBy},"
+	@Update("UPDATE `tb_role` SET `roleName`=#{roleName},`roleCode`=#{roleCode},`createBy`=#{createBy},"
 			+ "`updateBy`=#{updateBy},`createDate`=#{createDate},`updateDate`=#{updateDate} WHERE roleID=#{roleID}")
 	public boolean update(Role role);
 	
