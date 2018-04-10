@@ -14,6 +14,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.issue.tracking.model.Role;
+import com.issue.tracking.repository.retrofit.service.RoleServiceRetrofit;
+import com.issue.tracking.repository.retrofit.service.RoleServiceRetrofitImp;
 import com.issue.tracking.service.RoleService;
 
 @SpringBootApplication
@@ -26,6 +28,8 @@ public class IssueTrackingApplication implements ApplicationRunner{
 	@Autowired
 	private RoleService roleService;	
 	
+	@Autowired
+	private RoleServiceRetrofitImp roleServiceRetrofit;
 	@Override
 	public void run(ApplicationArguments arg0) throws Exception {		
 		/*Timestamp date = new java.sql.Timestamp(new java.util.Date().getTime());
@@ -39,6 +43,7 @@ public class IssueTrackingApplication implements ApplicationRunner{
 		//roleService.remove(16)	
 	      role=new Role(15,"u" , "s1 " , "b1 ", "t1 " , date, date);
 	      System.out.println(roleService.update(role));*/
+		roleServiceRetrofit.getAllRoles();
 	}
 	
 }

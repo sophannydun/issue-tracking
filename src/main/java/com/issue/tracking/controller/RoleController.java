@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.issue.tracking.model.Role;
+import com.issue.tracking.repository.retrofit.service.RoleServiceRetrofitImp;
 import com.issue.tracking.service.RoleService;
 
 @Controller
@@ -24,5 +25,6 @@ public class RoleController {
 		}
 		model.addAttribute("roles", roles);
 		return "role/role";
+		
 	}
 }

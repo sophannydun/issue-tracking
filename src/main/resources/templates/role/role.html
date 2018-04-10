@@ -95,7 +95,7 @@
 												<!-- <input type="hidden" name="_method" value="DELETE"> -->
 												<a class="btn btn-default" th:href="@{/role/{id}(id=${role.roleID})}">View</a>
 												<span>
-													<input type="hidden" name="id" th:value="${role.roleID}"/>
+													<input  name="id" th:value="${role.roleID}"/>
 													<input class="btn btn-danger" type="submit" value="Remove"/>
 												</span>
 												<a class="btn btn-warning" th:href="@{/role/edit(id=${role.roleID})}">Edit</a>
