@@ -28,7 +28,11 @@ public class FormController {
 	    }
 	    @RequestMapping("/tables")
 	    public String tables(){
-	        return "tables";
+	        return "/tables";
+	    }
+	    @RequestMapping("/icons")
+	    public String icons(){
+	        return "/icons";
 	    }
 	    
 }
