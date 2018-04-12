@@ -47,15 +47,40 @@ public class RoleServiceRetrofitImp {
 		 * jsonRole.body(); System.out.println(roles.toString()); }
 		 */
 	}
+	public Role findRoleById(Integer id) throws IOException {
+		Response<Role> jsonRole= roleServiceRetrofit.findRoleById(id).execute();
+		Role role=jsonRole.body();
+		if(role==null){
+			return new Role();
+		}
+		return role;
+	}
 
 	public Boolean createRole(Role role) throws IOException{
 		Response<Boolean> jsonRole = roleServiceRetrofit.createRole(role).execute();
 		Boolean status=false;
-		System.out.println("B4 assign=" + status);
+		System.out.println("B4 Create=" + status);
 		status=jsonRole.body();
 		System.out.println("jsonRole= " + jsonRole.body().toString());
 		System.out.println("After assign=" + status);
 		return status;
 	}
-
+	public Boolean updateRoleById(Role role) throws IOException{
+		Response<Boolean> jsonRole = roleServiceRetrofit.updateRoleById(role).execute();
+		Boolean status=false;
+		System.out.println("B4 update=" + status);
+		status=jsonRole.body();
+		System.out.println("jsonRole= " + jsonRole.body().toString());
+		System.out.println("After assign=" + status);
+		return status;
+	}
+	public Boolean removeRoleById(Integer id) throws IOException{
+		Response<Boolean> jsonRole = roleServiceRetrofit.removeRoleById(id).execute();
+		Boolean status=false;
+		System.out.println("B4 remove=" + status);
+		status=jsonRole.body();
+		System.out.println("jsonRole= " + jsonRole.body().toString());
+		System.out.println("After assign=" + status);
+		return status;
+	}
 }
