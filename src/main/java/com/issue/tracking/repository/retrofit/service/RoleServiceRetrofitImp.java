@@ -24,19 +24,13 @@ public class RoleServiceRetrofitImp {
 
 	
 	/* Normal API response */
-	public void getAllRoles() throws IOException {
+	public List<Role> getAllRoles() throws IOException {
 		Response<List<Role>> jsonRole = roleServiceRetrofit.getAllRoles().execute();
 		List<Role> roles = jsonRole.body();
 		for (Role role : roles) {
 			System.out.println(role.toString());
 		}
-		
-		
-		
-		
-		
-		
-		
+		return roles;
 		// System.out.println(roles);
 		/*
 		 * return array jsonObjec Response<JsonElement>
@@ -53,4 +47,15 @@ public class RoleServiceRetrofitImp {
 		 * jsonRole.body(); System.out.println(roles.toString()); }
 		 */
 	}
+
+	public Boolean createRole(Role role) throws IOException{
+		Response<Boolean> jsonRole = roleServiceRetrofit.createRole(role).execute();
+		Boolean status=false;
+		System.out.println("B4 assign=" + status);
+		status=jsonRole.body();
+		System.out.println("jsonRole= " + jsonRole.body().toString());
+		System.out.println("After assign=" + status);
+		return status;
+	}
+
 }

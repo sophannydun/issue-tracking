@@ -4,7 +4,7 @@
 	  layout:decorator="layouts/default">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <!-- Meta, title, CSS, favicons, etc. -->
+    Meta, title, CSS, favicons, etc.
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,7 +16,7 @@
     <div class="container body">
       <div class="main_container">
      
-        <!-- page content -->
+        page content
         <div class="right_col" role="main" layout:fragment="content">
           <div class="">
             <div class="page-title">
@@ -71,34 +71,33 @@
 									<tr>
 										<th>Role ID</th>
 										<th>Role Name</th>
-										<th>Role Code</th>
+										<!-- <th>Role Code</th> -->
 										<th>Create By</th>
 										<th>Update By</th>
 										<th>Create Date</th>
 										<th>Update Date</th>
 									</tr>
 								</thead>
-								<tbody th:each="role: ${roles}">
+								<tbody th:each="r: ${roles}">
 									<tr>
-										<td th:text="${role.roleID}">1</td>
-										<td th:text="${role.roleName}">A</td>
-										<td th:text="${role.roleCode}"></td>
-										<td th:text="${role.createBy}">1</td>
-										<td th:text="${role.updateBy}">A</td>
-										<!-- <td th:text="${role.createDate}"></td> -->
-										<td th:text="${#dates.format(role.createDate, 'dd-MMM-yyyy')}"></td>
-										<!-- <td th:text="${role.updateDate}"></td> -->
-										<td th:text="${#dates.format(role.updateDate, 'dd-MMM-yyyy')}"></td>
+										<td th:text="${r.roleid}">1</td>
+										<td th:text="${r.role}">A</td>			
+										<td th:text="${r.createby}">1</td>
+										<td th:text="${r.updateby}">A</td>
+										<td th:text="${r.createdate}"></td>
+										<!-- <td th:text="${#dates.format(role.createDate, 'dd-MMM-yyyy')}"></td> -->						
+										<td th:text="${r.updatedate}"></td>
+										<!-- <td th:text="${#dates.format(role.updateDate, 'dd-MMM-yyyy')}"></td> -->
 										
 										<td>
 											<form th:action="@{/role/remove}" th:method="delete">
-												<!-- <input type="hidden" name="_method" value="DELETE"> -->
-												<a class="btn btn-default" th:href="@{/role/{id}(id=${role.roleID})}">View</a>
+												<input type="hidden" name="_method" value="DELETE">
+												<a class="btn btn-default" th:href="@{/role/{id}(id=${r.roleid})}">View</a>
 												<span>
-													<input  name="id" th:value="${role.roleID}"/>
+													<input  name="id" th:value="${r.roleid}"/>
 													<input class="btn btn-danger" type="submit" value="Remove"/>
 												</span>
-												<a class="btn btn-warning" th:href="@{/role/edit(id=${role.roleID})}">Edit</a>
+												<a class="btn btn-warning" th:href="@{/role/edit(id=${r.roleid})}">Edit</a>
 											</form>
 										</td>
 									</tr>
@@ -113,7 +112,7 @@
             	
             </div>
    		</div>
-        <!-- /page content -->
+        /page content
       </div>
     </div>
   </body>

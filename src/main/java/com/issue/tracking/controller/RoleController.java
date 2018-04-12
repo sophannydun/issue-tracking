@@ -1,5 +1,6 @@
 package com.issue.tracking.controller;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,21 +10,16 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import com.issue.tracking.model.Role;
 import com.issue.tracking.repository.retrofit.service.RoleServiceRetrofitImp;
-import com.issue.tracking.service.RoleService;
-
 @Controller
 public class RoleController {
 	
 	@Autowired
-	private RoleService roleService;
-	
-	@GetMapping("/role")
-	public String RolePage(Model model){
-		List<Role> roles=roleService.getAllRoles();
-		for (int i = 0; i < roles.size(); i++) {
-		     System.out.println(roles.get(i).toString());
-		}
-		model.addAttribute("roles", roles);
+	private RoleServiceRetrofitImp roleServiceRetrofit;
+	List<Role> roles;
+	@GetMapping("/roles")
+	public String RolePage(Model model) throws IOException{
+			roles=roleServiceRetrofit.getAllRoles();
+			model.addAttribute("roles", roles);
 		return "role/role";
 		
 	}
