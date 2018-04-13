@@ -1,0 +1,38 @@
+package com.issue.tracking.repository.retrofit.service;
+
+import java.io.IOException;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.issue.tracking.model.Issue;
+
+import retrofit2.Response;
+import retrofit2.Retrofit;
+
+@Service
+public class IssueServiceImp implements IssueService {
+
+	private IssueServiceClient IssueServiceClient;
+	
+	@Autowired
+	 public IssueServiceImp(Retrofit retrofit) {
+
+		 this.IssueServiceClient = retrofit.create(IssueServiceClient.class);
+		 
+	}
+	
+	@Override
+	public List<Issue> getAllIssues() {
+		Response<List<Issue>> jsonIssue = null;
+		try {
+			jsonIssue = this.IssueServiceClient.getAllIssues().execute();
+		}catch (IOException e) {
+			e.printStackTrace();
+		}
+		List<Issue> issues = jsonIssue.body();
+		
+		return issues;
+	}
+}
