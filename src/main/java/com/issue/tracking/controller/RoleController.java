@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import com.issue.tracking.model.Role;
 import com.issue.tracking.repository.retrofit.service.RoleServiceRetrofitImp;
@@ -24,6 +25,19 @@ public class RoleController {
 		return "role/role";
 		
 	}
+	
+	@GetMapping("/roles/{id}")
+	public String findRoleById(@PathVariable("id") Integer id,Model model) throws IOException{
+		Role role=roleServiceRetrofit.findRoleById(id);
+		if(role==null){
+			model.addAttribute("role",new Role());
+		}
+		model.addAttribute("role", role);
+		
+		return "/role/roledetail";
+	}
+	
+	
 	
 	@DeleteMapping("/roles/remove")
 	public String removeRole(Integer id){

@@ -92,12 +92,13 @@
 										<td>
 											<form th:action="@{/role/remove}" th:method="delete">
 												<!-- <input type="hidden" name="_method" value="DELETE"> -->
-												<a class="btn btn-default" th:href="@{/role/{id}(id=${r.roleid})}">View</a>
+												<a class="btn btn-info" th:href="@{/roles/{id}(id=${r.roleid})}">View</a>
 												<span>
 													<input  name="id" th:value="${r.roleid}"/>
 													<input class="btn btn-danger" type="submit" value="Remove"/>
 												</span>
 												<a class="btn btn-warning" th:href="@{/role/edit(id=${r.roleid})}">Edit</a>
+												<a class="btn btn-warning" th:href="@{/roles/edit/{id}(id=${r.roleid})}">Edit</a>
 											</form>
 										</td>
 									</tr>
