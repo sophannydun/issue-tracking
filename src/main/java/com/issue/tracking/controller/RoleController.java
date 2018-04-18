@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import com.issue.tracking.model.Role;
 import com.issue.tracking.repository.retrofit.service.RoleServiceRetrofitImp;
@@ -46,6 +47,13 @@ public class RoleController {
 	
 	@GetMapping("/roles/addRole")
 	public String addRole(){
+		return "/role/addRole";
+	}
+	@PostMapping("/roles/addRole")
+	public String actionAddRole(Role role) throws IOException{
+		Boolean status=roleServiceRetrofit.createRole(role);
+		System.out.println(status +" Created "+ role);
+		
 		return "/role/addRole";
 	}
 }

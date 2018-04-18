@@ -1,110 +1,120 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	  layout:decorator="layouts/default">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <!-- Meta, title, CSS, favicons, etc. -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layouts/default">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!-- Meta, title, CSS, favicons, etc. -->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Role | IssueTracking</title>
-  </head>
+<title>Add Role | IssueTracking</title>
+</head>
 
-  <body class="nav-md">
-    <div class="container body">
-      <div class="main_container">
-     
-        page content
-        <div class="right_col" role="main" layout:fragment="content">
-          <div class="">
-            <div class="page-title">
-              <div class="title_left">
-                <h3>Role</h3>
-              </div>
+<body class="nav-md">
+	<div class="container body">
+		<div class="main_container">
 
-              <div class="title_right">
-                <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
-                  <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search for...">
-                    <span class="input-group-btn">
-                      <button class="btn btn-default" type="button">Go!</button>
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="clearfix"></div>
-            <div class="row">
-              <div class="col-md-12 col-sm-12 col-xs-12">
-                <div class="x_panel">
-                  <div class="x_title">
-                    <h2>Role Form Design <small>Create and Update Role</small></h2>
-                    <ul class="nav navbar-right panel_toolbox">
-                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                      </li>
-                      <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                        <ul class="dropdown-menu" role="menu">
-                          <li><a href="#">Settings 1</a>
-                          </li>
-                          <li><a href="#">Settings 2</a>
-                          </li>
-                        </ul>
-                      </li>
-                      <li><a class="close-link"><i class="fa fa-close"></i></a>
-                      </li>
-                    </ul>
-                    <div class="clearfix"></div>
-                  </div>
-                  <div class="x_content">
-                    <br />
-                  <!--   <form th:action="${addStatus==true?'/user/add':'/user/update'}" method="post" th:object="${role}" id="role-form" data-parsley-validate class="form-horizontal form-label-left">
-						<div class="x_content">
-						<form th:action="${addStatus==true?'/user/add':'/user/update'}" method="post" th:object="${user}" enctype="multipart/form-data">
-							<label th:if="${#fields.hasErrors('*')}" th:text="'Errors: '">Errors: </label>
-							<ul>
-								<li th:each="err: ${#fields.errors('*')}" th:text="${err}"></li>
-							</ul>
-							
-							<input type="hidden" th:field="*{id}"/>
-							
-							<div class="form-group">
-								<label>Name: </label> <input type="text" class="form-control" th:field="*{name}" placeholder="Enter Username"/>
-								<span class="error" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Error Name</span>
+			<div class="right_col" role="main" layout:fragment="content">
+				<div class="">
+					<div class="page-title">
+						<div class="title_left">
+							<h3>New Role</h3>
+						</div>
+
+						<div class="title_right">
+							<div
+								class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+								<div class="input-group">
+									<input type="text" class="form-control"
+										placeholder="Search for..."> <span
+										class="input-group-btn">
+										<button class="btn btn-default" type="button">Go!</button>
+									</span>
+								</div>
 							</div>
-							<div class="form-group">
-								<label>Gender:</label> <input type="text" class="form-control" th:field="*{gender}" placeholder="Enter Gender"/>
-								<span class="error" th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}">Error Gender</span>
+						</div>
+					</div>
+					<div class="clearfix"></div>
+					<div class="row">
+						<div class="col-md-12 col-sm-12 col-xs-12">
+							<div class="x_panel">
+								<div class="x_title">
+									<h2>
+										Add New Role Information <small>Add New Role</small>
+									</h2>
+									<ul class="nav navbar-right panel_toolbox">
+										<li><a class="collapse-link"><i
+												class="fa fa-chevron-up"></i></a></li>
+										<li class="dropdown"><a href="#" class="dropdown-toggle"
+											data-toggle="dropdown" role="button" aria-expanded="false"><i
+												class="fa fa-wrench"></i></a>
+											<ul class="dropdown-menu" role="menu">
+												<li><a href="#">Settings 1</a></li>
+												<li><a href="#">Settings 2</a></li>
+											</ul></li>
+										<li><a class="close-link"><i class="fa fa-close"></i></a>
+										</li>
+									</ul>
+									<div class="clearfix"></div>
+								</div>
+								<div class="x_content">
+									<div class="container">
+										<form class="form-horizontal" action="/roles/addRole" method="post">
+											<div class="form-group">
+												<label class="control-label col-sm-2" for="roleid">Role ID:</label>
+												<div class="col-sm-4">
+													<input type="text" class="form-control" id="roleid" name="roleid">
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="control-label col-sm-2" for="role">Role:</label>
+												<div class="col-sm-4">
+													<input type="text" class="form-control" id="role" name="role">
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="control-label col-sm-2" for="createby">Create By:</label>
+												<div class="col-sm-4">
+													<input type="text" class="form-control" id="createby" name="createby">
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="control-label col-sm-2" for="createby">Update By:</label>
+												<div class="col-sm-4">
+													<input type="text" class="form-control" id="updateby"  name="updateby">
+												</div>
+											</div>
+												<div class="form-group">
+												<label class="control-label col-sm-2" for="createby">Create Date:</label>
+												<div class="col-sm-4">
+													<input type="text" class="form-control" id="createdate" name="createdate">
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="control-label col-sm-2" for="createby">Update Date:</label>
+												<div class="col-sm-4">
+													<input type="text" class="form-control" id="updatedate" name="updatedate">
+												</div>
+											</div>
+											<div class="form-group">
+												<div class="col-sm-offset-2 col-sm-1">
+													<input type="submit" class="form-control btn btn-primary" id="createUser" name="createUser">
+												</div>
+												<a class="btn btn-default" href="/roles">Roles List</a>
+											</div>
+										</form>
+									</div>
+								</div>
 							</div>
-							<div class="form-group">
-								<label>Role:</label><br/>
-								<select class="selectpicker" multiple>
-								  	<option th:each="r: ${roles}" th:value="${r.id}" th:text="${r.role}"></option>
-								</select>
-								<input type="hidden" name="roleIds" id="roleIds"/> 
-								
-							</div>
-							<div class="form-group">
-								<label>Image:</label> 
-								<input type="file" name="file"/>
-								<input type="hidden" class="form-control" th:field="*{image}" placeholder="Enter Image"/>
-							</div>
-							<div class="pull-right">
-								<a href="/" class="btn btn-default">Cancel</a>
-								<button type="submit" class="btn btn-primary" th:text="${addStatus==true?'Create User': 'Update User'}">Create User</button>
-							</div>
-					</form> -->
-						</div>        
-                  </div>
-                </div>
-              </div>   
-              </div>
-            	
-            </div>
-   		</div>
-        /page content
-      </div>
-  </body>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+		<!-- /page content -->
+	</div>
+</body>
 </html>
