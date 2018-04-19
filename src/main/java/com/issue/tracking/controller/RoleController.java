@@ -1,8 +1,9 @@
 package com.issue.tracking.controller;
 
+import static org.assertj.core.api.Assertions.setMaxElementsForPrinting;
+
 import java.io.IOException;
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,9 +11,12 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.issue.tracking.model.Role;
+import com.issue.tracking.repository.retrofit.service.RoleServiceRetrofit;
 import com.issue.tracking.repository.retrofit.service.RoleServiceRetrofitImp;
+
 @Controller
 public class RoleController {
 	
@@ -40,9 +44,13 @@ public class RoleController {
 	
 	
 	
-	@DeleteMapping("/roles/remove")
-	public String removeRole(Integer id){
-		return "";
+	@DeleteMapping("/roles/remove/{id}")
+	public String removeRole(@PathVariable("id") Integer id) throws IOException{
+		Boolean status=false;
+		System.out.println(status +" Removed "+ id);
+		status=roleServiceRetrofit.removeRoleById(id);
+		System.out.println(status +" Removed "+ id);
+		return "redirect:/roles";
 	}
 	
 	@GetMapping("/roles/addRole")
@@ -53,7 +61,7 @@ public class RoleController {
 	public String actionAddRole(Role role) throws IOException{
 		Boolean status=roleServiceRetrofit.createRole(role);
 		System.out.println(status +" Created "+ role);
-		
-		return "/role/addRole";
+		//redirect to mapped /roles
+		return "redirect:/roles";
 	}
 }
