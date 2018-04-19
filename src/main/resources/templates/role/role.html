@@ -16,12 +16,12 @@
 	<div class="container body">
 		<div class="main_container">
 
-			page content
+			<!-- page content -->
 			<div class="right_col" role="main" layout:fragment="content">
 				<div class="">
 					<div class="page-title">
 						<div class="title_left">
-							<h3>Form Elements</h3>
+							<h3>Role List</h3>
 						</div>
 
 						<div class="title_right">
@@ -43,7 +43,7 @@
 							<div class="x_panel">
 								<div class="x_title">
 									<h2>
-										Form Design <small>different form elements</small>
+										Role information <small>List down all roles information</small>
 									</h2>
 									<ul class="nav navbar-right panel_toolbox">
 										<li><a class="collapse-link"><i
@@ -61,15 +61,18 @@
 									<div class="clearfix"></div>
 								</div>
 								<div class="x_content">
+									<a class="btn btn-default" href="/roles/addRole"><b>Add New Role</b></a> 
+									<!-- <a class="btn btn-info" th:href="@{/roles/addRole}">Add New Role</a>  -->
+								<!-- 	<button type="button" class="btn btn-secondary">Secondary</button> -->
 									<br />
 									<form id="role-form" data-parsley-validate
 										class="form-horizontal form-label-left">
 										<div class="x_content">
-											<p class="text-muted font-13 m-b-30">Responsive is an
+											<!-- <p class="text-muted font-13 m-b-30">Responsive is an
 												extension for DataTables that resolves that problem by
 												optimising the table's layout for different screen sizes
 												through the dynamic insertion and removal of columns from
-												the table.</p>
+												the table.</p> -->
 
 											<table id="datatable-responsive"
 												class="table table-hover table-striped table-bordered dt-responsive nowrap"
@@ -83,12 +86,14 @@
 														<th>Update By</th>
 														<th>Create Date</th>
 														<th>Update Date</th>
+														<th>Operation</th>
+														
 													</tr>
 												</thead>
 												<tbody th:each="r: ${roles}">
 													<tr>
-														<td th:text="${r.roleid}">1</td>
-														<td th:text="${r.role}">A</td>
+														<td th:text="${r.roleid}">1</td>													
+														<td><span th:text="${r.role}" class="label label-success">Success Label</span></td>
 														<td th:text="${r.createby}">1</td>
 														<td th:text="${r.updateby}">A</td>
 														<td th:text="${r.createdate}"></td>
@@ -97,16 +102,21 @@
 														<!-- <td th:text="${#dates.format(role.updateDate, 'dd-MMM-yyyy')}"></td> -->
 
 														<td>
-															<form th:action="@{/role/remove}" th:method="delete">
+															<form th:action="/roles/remove/1" th:method="delete">
 																<!-- <input type="hidden" name="_method" value="DELETE"> -->
-																<a class="btn btn-info"
-																	th:href="@{/roles/{id}(id=${r.roleid})}">View</a> <span>
-																	<input name="id" th:value="${r.roleid}" /> <input
-																	class="btn btn-danger" type="submit" value="Remove" />
-																</span> <a class="btn btn-warning"
-																	th:href="@{/role/edit(id=${r.roleid})}">Edit</a> <a
-																	class="btn btn-warning"
-																	th:href="@{/roles/edit/{id}(id=${r.roleid})}">Edit</a>
+																
+																<!-- <span>
+																	<input type="hidden" name="id" th:value="${r.roleid}" class="form-control input-sm"/> 
+																	<input class="btn btn-danger btn-sm" type="submit" value="Remove" />
+																</span>  -->
+																<a class="btn btn-info btn-sm"
+																	th:href="@{/roles/{id}(id=${r.roleid})}">View</a> 
+																<!-- <a class="btn btn-danger btn-sm"
+																	th:href="@{/roles/remove/{id}(id=${r.roleid})}">New Remove</a>  -->
+																	<input class="btn btn-danger btn-sm" type="submit" value="Remove" />
+																<a class="btn btn-warning btn-sm"
+																	th:href="@{/role/edit(id=${r.roleid})}">Edit</a> 
+																	<a class="btn btn-warning btn-sm" th:href="@{/roles/edit/{id}(id=${r.roleid})}">Edit</a>
 															</form>
 														</td>
 													</tr>

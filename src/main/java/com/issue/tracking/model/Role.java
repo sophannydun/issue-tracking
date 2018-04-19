@@ -1,11 +1,6 @@
 package com.issue.tracking.model;
 
-
-import java.util.Date;
-
-
 public class Role{
-/*implements GrantedAuthority{*/
 	private int roleid;
 	private String role;
 	private String createby;
@@ -48,11 +43,6 @@ public class Role{
 	public void setUpdatedate(String updatedate) {
 		this.updatedate = updatedate;
 	}
-	@Override
-	public String toString() {
-		return "Role [roleid=" + roleid + ", role=" + role + ", createby=" + createby + ", updateby=" + updateby
-				+ ", createdate=" + createdate + ", updatedate=" + updatedate + "]";
-	}
 	public Role(int roleid, String role, String createby, String updateby, String createdate, String updatedate) {
 		super();
 		this.roleid = roleid;
@@ -62,6 +52,9 @@ public class Role{
 		this.createdate = createdate;
 		this.updatedate = updatedate;
 	}
+	public Role() {
+		super();
+	}
 	public Role(String role, String createby, String updateby, String createdate, String updatedate) {
 		super();
 		this.role = role;
@@ -70,9 +63,9 @@ public class Role{
 		this.createdate = createdate;
 		this.updatedate = updatedate;
 	}
-	public Role() {
-		super();
+	@Override
+	public String toString() {
+		return "Role [roleid=" + roleid + ", role=" + role + ", createby=" + createby + ", updateby=" + updateby
+				+ ", createdate=" + createdate + ", updatedate=" + updatedate + "]";
 	}
-	
-	
 }
