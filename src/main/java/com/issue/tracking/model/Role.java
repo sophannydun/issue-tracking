@@ -1,18 +1,17 @@
 package com.issue.tracking.model;
 
 public class Role{
-/*implements GrantedAuthority{*/
-	private int roleId;
+	private int roleid;
 	private String role;
 	private String createby;
 	private String updateby;
 	private String createdate;
 	private String updatedate;
-	public int getRoleId() {
-		return roleId;
+	public int getRoleid() {
+		return roleid;
 	}
-	public void setRoleId(int roleId) {
-		this.roleId = roleId;
+	public void setRoleid(int roleid) {
+		this.roleid = roleid;
 	}
 	public String getRole() {
 		return role;
@@ -44,9 +43,9 @@ public class Role{
 	public void setUpdatedate(String updatedate) {
 		this.updatedate = updatedate;
 	}
-	public Role(int roleId, String role, String createby, String updateby, String createdate, String updatedate) {
+	public Role(int roleid, String role, String createby, String updateby, String createdate, String updatedate) {
 		super();
-		this.roleId = roleId;
+		this.roleid = roleid;
 		this.role = role;
 		this.createby = createby;
 		this.updateby = updateby;
@@ -58,10 +57,9 @@ public class Role{
 	}
 	@Override
 	public String toString() {
-		return "Role [roleId=" + roleId + ", role=" + role + ", createby=" + createby + ", updateby=" + updateby
+		return "Role [roleid=" + roleid + ", role=" + role + ", createby=" + createby + ", updateby=" + updateby
 				+ ", createdate=" + createdate + ", updatedate=" + updatedate + "]";
 	}
-	
 	
 	
 }
