@@ -61,7 +61,7 @@
 									<div class="clearfix"></div>
 								</div>
 								<div class="x_content">
-									<a class="btn btn-primary" href="/roles/addRole">Add New Role</a> 
+									<a class="btn btn-default" href="/roles/addRole"><b>Add New Role</b></a> 
 									<!-- <a class="btn btn-info" th:href="@{/roles/addRole}">Add New Role</a>  -->
 								<!-- 	<button type="button" class="btn btn-secondary">Secondary</button> -->
 									<br />
@@ -92,8 +92,8 @@
 												</thead>
 												<tbody th:each="r: ${roles}">
 													<tr>
-														<td th:text="${r.roleid}">1</td>
-														<td th:text="${r.role}">A</td>
+														<td th:text="${r.roleid}">1</td>													
+														<td><span th:text="${r.role}" class="label label-success">Success Label</span></td>
 														<td th:text="${r.createby}">1</td>
 														<td th:text="${r.updateby}">A</td>
 														<td th:text="${r.createdate}"></td>
@@ -102,18 +102,21 @@
 														<!-- <td th:text="${#dates.format(role.updateDate, 'dd-MMM-yyyy')}"></td> -->
 
 														<td>
-															<form th:action="@{/role/remove}" th:method="delete">
+															<form th:action="/roles/remove/1" th:method="delete">
 																<!-- <input type="hidden" name="_method" value="DELETE"> -->
-																<a class="btn btn-info"
+																
+																<!-- <span>
+																	<input type="hidden" name="id" th:value="${r.roleid}" class="form-control input-sm"/> 
+																	<input class="btn btn-danger btn-sm" type="submit" value="Remove" />
+																</span>  -->
+																<a class="btn btn-info btn-sm"
 																	th:href="@{/roles/{id}(id=${r.roleid})}">View</a> 
-																<span>
-																	<input name="id" th:value="${r.roleid}" /> 
-																	<input
-																	class="btn btn-danger" type="submit" value="Remove" />
-																</span> 
-																<a class="btn btn-warning"
+																<!-- <a class="btn btn-danger btn-sm"
+																	th:href="@{/roles/remove/{id}(id=${r.roleid})}">New Remove</a>  -->
+																	<input class="btn btn-danger btn-sm" type="submit" value="Remove" />
+																<a class="btn btn-warning btn-sm"
 																	th:href="@{/role/edit(id=${r.roleid})}">Edit</a> 
-																	<a class="btn btn-warning" th:href="@{/roles/edit/{id}(id=${r.roleid})}">Edit</a>
+																	<a class="btn btn-warning btn-sm" th:href="@{/roles/edit/{id}(id=${r.roleid})}">Edit</a>
 															</form>
 														</td>
 													</tr>

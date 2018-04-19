@@ -3,8 +3,6 @@ package com.issue.tracking.repository.retrofit.service;
 import java.util.List;
 
 import com.issue.tracking.model.Role;
-import com.issue.tracking.model.RoleCustomResponse;
-
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
@@ -12,7 +10,6 @@ import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
-import retrofit2.http.Query;
 
 public interface RoleServiceRetrofit {
 	@GET("/api/roles")
@@ -32,6 +29,6 @@ public interface RoleServiceRetrofit {
 	@PUT("/api/roles")
 	Call<Boolean> updateRoleById(@Body Role role);
 	
-	@DELETE("/api/roles/{id}")
-	Call<Boolean> removeRoleById(@Path("id") Integer id);
+	@DELETE("/api/roles/remove/{id}")
+	Call<Boolean> removeRoleById(@Path("id")Integer id);
 }

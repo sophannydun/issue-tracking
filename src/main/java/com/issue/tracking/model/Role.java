@@ -55,11 +55,17 @@ public class Role{
 	public Role() {
 		super();
 	}
+	public Role(String role, String createby, String updateby, String createdate, String updatedate) {
+		super();
+		this.role = role;
+		this.createby = createby;
+		this.updateby = updateby;
+		this.createdate = createdate;
+		this.updatedate = updatedate;
+	}
 	@Override
 	public String toString() {
 		return "Role [roleid=" + roleid + ", role=" + role + ", createby=" + createby + ", updateby=" + updateby
 				+ ", createdate=" + createdate + ", updatedate=" + updatedate + "]";
 	}
-	
-	
 }
