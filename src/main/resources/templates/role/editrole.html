@@ -9,18 +9,19 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Add Role | IssueTracking</title>
+<title>Role | IssueTracking</title>
 </head>
 
 <body class="nav-md">
 	<div class="container body">
 		<div class="main_container">
 
+			page content
 			<div class="right_col" role="main" layout:fragment="content">
 				<div class="">
 					<div class="page-title">
 						<div class="title_left">
-							<h3>New Role</h3>
+							<h3>Role</h3>
 						</div>
 
 						<div class="title_right">
@@ -42,7 +43,7 @@
 							<div class="x_panel">
 								<div class="x_title">
 									<h2>
-										Add New Role Information <small>No need to input Role ID</small>
+										Detail Role Information <small>Detail Role</small>
 									</h2>
 									<ul class="nav navbar-right panel_toolbox">
 										<li><a class="collapse-link"><i
@@ -61,48 +62,53 @@
 								</div>
 								<div class="x_content">
 									<div class="container">
-										<form class="form-horizontal" action="/roles/addRole" method="post">
-											<div class="form-group">
+										<form class="form-horizontal" action="#">
+											<div class="form-group" th:object="${role}">
 												<label class="control-label col-sm-2" for="roleid">Role ID:</label>
-												<div class="col-sm-4">
-													<input type="text" class="form-control" id="roleid" name="roleid">
+												<div class="col-sm-10">
+													<input type="text" class="form-control" id="roleid" th:value="*{roleid}" name="roleid" readonly>
 												</div>
 											</div>
 											<div class="form-group">
 												<label class="control-label col-sm-2" for="role">Role:</label>
-												<div class="col-sm-4">
-													<input type="text" class="form-control" id="role" name="role">
+												<div class="col-sm-10">
+													<input type="text" class="form-control" id="role"
+														th:value="${role.role}" name="role" >
 												</div>
 											</div>
 											<div class="form-group">
 												<label class="control-label col-sm-2" for="createby">Create By:</label>
-												<div class="col-sm-4">
-													<input type="text" class="form-control" id="createby" name="createby">
+												<div class="col-sm-10">
+													<input type="text" class="form-control" id="createby"
+														th:value="${role.createby}" name="createby" >
 												</div>
 											</div>
 											<div class="form-group">
 												<label class="control-label col-sm-2" for="createby">Update By:</label>
-												<div class="col-sm-4">
-													<input type="text" class="form-control" id="updateby"  name="updateby">
+												<div class="col-sm-10">
+													<input type="text" class="form-control" id="updateby"
+														th:value="${role.updateby}" name="updateby" >
 												</div>
 											</div>
 												<div class="form-group">
 												<label class="control-label col-sm-2" for="createby">Create Date:</label>
-												<div class="col-sm-4">
-													<input type="text" class="form-control" id="createdate" name="createdate">
+												<div class="col-sm-10">
+													<input type="text" class="form-control" id="createdate"
+														th:value="${role.createdate}" name="createdate" >
 												</div>
 											</div>
 											<div class="form-group">
-												<label class="control-label col-sm-2" for="createby" >Update Date:</label>
-												<div class="col-sm-4">
-													<input type="text" class="form-control" id="updatedate" name="updatedate" data-provide="datepicker">
+												<label class="control-label col-sm-2" for="createby">Update Date:</label>
+												<div class="col-sm-10">
+													<input type="text" class="form-control" id="updatedate"
+														th:value="${role.updatedate}" name="updatedate" >
 												</div>
 											</div>
 											<div class="form-group">
-												<div class="col-sm-offset-2 col-sm-2">
-													<input type="submit" class="form-control btn btn-primary" id="createUser" name="createUser" value="Create">
+												<div class="col-sm-offset-2 col-sm-10">
+													<a href="#" class="btn btn-primary">Update Role</a>
+													<a class="btn btn-default" th:href="@{/roles}">Roles List</a>
 												</div>
-												<a class="btn btn-default" href="/roles">Roles List</a>
 											</div>
 										</form>
 									</div>
@@ -114,13 +120,7 @@
 
 			</div>
 		</div>
-		<!-- /page content -->
+		/page content
 	</div>
-	<script>
-			$('.createdate').datepicker({
-			    startDate: '-3d'
-			});
-	
-	</script>
 </body>
 </html>

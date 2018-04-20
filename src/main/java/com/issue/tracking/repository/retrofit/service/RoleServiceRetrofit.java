@@ -10,6 +10,7 @@ import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public interface RoleServiceRetrofit {
 	@GET("/api/roles")
@@ -29,6 +30,11 @@ public interface RoleServiceRetrofit {
 	@PUT("/api/roles")
 	Call<Boolean> updateRoleById(@Body Role role);
 	
+	//calling API @PathVariable in Retrofit use @Path
 	@DELETE("/api/roles/remove/{id}")
 	Call<Boolean> removeRoleById(@Path("id")Integer id);
+	
+	//calling API @RequestParam in Retrofit use @Query
+	/*@DELETE("/api/roles/remove")
+	Call<Boolean> removeRoleById(@Query("id")Integer id);*/
 }

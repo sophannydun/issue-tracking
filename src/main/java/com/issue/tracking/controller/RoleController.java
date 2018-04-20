@@ -52,6 +52,18 @@ public class RoleController {
 		System.out.println(status +" Removed "+ id);
 		return "redirect:/roles";
 	}
+	// retrofit with api
+	// form with controler
+	
+	//calling RoleServiceRetrofit via RequestParam that calling API @RequestParam in Retrofit use @Query
+	/*@DeleteMapping("/roles/remove")
+	public String removeRole(@RequestParam("id") Integer id) throws IOException{
+		Boolean status=false;
+		System.out.println(status +" Removed "+ id);
+		status=roleServiceRetrofit.removeRoleById(id);
+		System.out.println(status +" Removed "+ id);
+		return "redirect:/roles";
+	}*/
 	
 	@GetMapping("/roles/addRole")
 	public String addRole(){
@@ -63,5 +75,15 @@ public class RoleController {
 		System.out.println(status +" Created "+ role);
 		//redirect to mapped /roles
 		return "redirect:/roles";
+	}
+	@GetMapping("/roles/edit/{id}")
+	public String editRole(@PathVariable("id") Integer id,Model model) throws IOException{
+		Role role=roleServiceRetrofit.findRoleById(id);
+		if(role==null){
+			model.addAttribute("role",new Role());
+		}
+		model.addAttribute("role", role);
+		
+		return "/role/editrole";
 	}
 }

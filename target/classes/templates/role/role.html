@@ -65,8 +65,8 @@
 									<!-- <a class="btn btn-info" th:href="@{/roles/addRole}">Add New Role</a>  -->
 								<!-- 	<button type="button" class="btn btn-secondary">Secondary</button> -->
 									<br />
-									<form id="role-form" data-parsley-validate
-										class="form-horizontal form-label-left">
+									<!-- <form id="role-form" data-parsley-validate
+										class="form-horizontal form-label-left"> -->
 										<div class="x_content">
 											<!-- <p class="text-muted font-13 m-b-30">Responsive is an
 												extension for DataTables that resolves that problem by
@@ -87,7 +87,6 @@
 														<th>Create Date</th>
 														<th>Update Date</th>
 														<th>Operation</th>
-														
 													</tr>
 												</thead>
 												<tbody th:each="r: ${roles}">
@@ -101,29 +100,33 @@
 														<td th:text="${r.updatedate}"></td>
 														<!-- <td th:text="${#dates.format(role.updateDate, 'dd-MMM-yyyy')}"></td> -->
 
-														<td>
-															<form th:action="/roles/remove/1" th:method="delete">
-																<!-- <input type="hidden" name="_method" value="DELETE"> -->
-																
-																<!-- <span>
-																	<input type="hidden" name="id" th:value="${r.roleid}" class="form-control input-sm"/> 
-																	<input class="btn btn-danger btn-sm" type="submit" value="Remove" />
-																</span>  -->
+														<td>															
 																<a class="btn btn-info btn-sm"
 																	th:href="@{/roles/{id}(id=${r.roleid})}">View</a> 
-																<!-- <a class="btn btn-danger btn-sm"
-																	th:href="@{/roles/remove/{id}(id=${r.roleid})}">New Remove</a>  -->
-																	<input class="btn btn-danger btn-sm" type="submit" value="Remove" />
-																<a class="btn btn-warning btn-sm"
-																	th:href="@{/role/edit(id=${r.roleid})}">Edit</a> 
+																	
+																<!-- calling RoleController call RoleServiceImp via PathVariable that calling API @PathVariable in Retrofit use @Path -->
+																<form th:action="@{/roles/remove/{id}(id=${r.roleid})}" th:method="delete">
+																	<input class="btn btn-danger btn-sm" type="submit" value="Delete" />
+																</form>
+																
+																
+																
+																<!-- calling RoleController call RoleServiceImp via RequestParam that calling API @RequestParam in Retrofit use @Query -->
+																<!-- <form th:action="@{/roles/remove}" th:method="delete">
+																	<input type="hidden" name="id" th:value="${r.roleid}"/> because it is the id parameter, if we don't send id how can we remove
+																	<input class="btn btn-danger btn-sm" type="submit" value="Test" />
+																</form> -->
+																<!-- redirect form use @RequestParam -->
+																<!-- <a class="btn btn-warning btn-sm"
+																	th:href="@{/role/edit(id=${r.roleid})}">Edit</a>  -->
 																	<a class="btn btn-warning btn-sm" th:href="@{/roles/edit/{id}(id=${r.roleid})}">Edit</a>
-															</form>
+														
 														</td>
 													</tr>
 												</tbody>
 											</table>
 										</div>
-									</form>
+										<!-- </form> -->
 								</div>
 							</div>
 						</div>
@@ -131,7 +134,7 @@
 
 				</div>
 			</div>
-			/page content
+		<!-- 	/page content -->
 		</div>
 	</div>
 </body>
