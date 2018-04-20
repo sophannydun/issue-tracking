@@ -100,33 +100,41 @@
 														<td th:text="${r.updatedate}"></td>
 														<!-- <td th:text="${#dates.format(role.updateDate, 'dd-MMM-yyyy')}"></td> -->
 
-														<td>															
+													<td>
+														<div class="row">
+															<div class="col-xs-3 col-md-3">
 																<a class="btn btn-info btn-sm"
-																	th:href="@{/roles/{id}(id=${r.roleid})}">View</a> 
-																	
-																<!-- calling RoleController call RoleServiceImp via PathVariable that calling API @PathVariable in Retrofit use @Path -->
-																<form th:action="@{/roles/remove/{id}(id=${r.roleid})}" th:method="delete">
-																	<input class="btn btn-danger btn-sm" type="submit" value="Delete" />
-																</form>
-																
-																
-																
-																<!-- calling RoleController call RoleServiceImp via RequestParam that calling API @RequestParam in Retrofit use @Query -->
-																<!-- <form th:action="@{/roles/remove}" th:method="delete">
+																	th:href="@{/roles/{id}(id=${r.roleid})}">View</a>
+															</div>
+															<div class="col-xs-3 col-md-3">
+															<!-- calling RoleController call RoleServiceImp via PathVariable that calling API @PathVariable in Retrofit use @Path -->
+															<form th:action="@{/roles/remove/{id}(id=${r.roleid})}"
+																th:method="delete">
+																<input class="btn btn-danger btn-sm" type="submit"
+																	value="Delete" />
+															</form>
+															</div>
+
+															<!-- calling RoleController call RoleServiceImp via RequestParam that calling API @RequestParam in Retrofit use @Query -->
+															<!-- <form th:action="@{/roles/remove}" th:method="delete">
 																	<input type="hidden" name="id" th:value="${r.roleid}"/> because it is the id parameter, if we don't send id how can we remove
 																	<input class="btn btn-danger btn-sm" type="submit" value="Test" />
 																</form> -->
-																<!-- redirect form use @RequestParam -->
-																<!-- <a class="btn btn-warning btn-sm"
+															<!-- redirect form use @RequestParam -->
+															<!-- <a class="btn btn-warning btn-sm"
 																	th:href="@{/role/edit(id=${r.roleid})}">Edit</a>  -->
-																	<a class="btn btn-warning btn-sm" th:href="@{/roles/edit/{id}(id=${r.roleid})}">Edit</a>
-														
-														</td>
-													</tr>
+															<div class="col-xs-3 col-md-3">
+															<a class="btn btn-warning btn-sm"
+																th:href="@{/roles/edit/{id}(id=${r.roleid})}">Edit</a>
+															</div>
+															
+														</div>
+													</td>
+												</tr>
 												</tbody>
 											</table>
 										</div>
-										<!-- </form> -->
+									<!-- 	</form> -->
 								</div>
 							</div>
 						</div>
