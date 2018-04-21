@@ -106,7 +106,7 @@
 											</div>
 											<div class="form-group">
 												<div class="col-sm-offset-2 col-sm-10">
-													<a href="/roles" class="btn btn-warning">Edit Role</a>
+													<a th:href="@{/roles/edit/{id}(id=${role.roleid})}" class="btn btn-warning">Edit Role</a>
 													<a class="btn btn-primary" th:href="@{/roles}">Roles List</a>
 												</div>
 											</div>

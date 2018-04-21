@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.issue.tracking.model.Role;
@@ -85,5 +86,12 @@ public class RoleController {
 		model.addAttribute("role", role);
 		
 		return "/role/editrole";
+	}
+	@PutMapping("/roles/edit")
+	public String actionEditRole(Role role) throws IOException{
+		Boolean status=roleServiceRetrofit.updateRoleById(role);
+		System.out.println(status +" Updated "+ role);
+		//redirect to mapped /roles
+		return "redirect:/roles";
 	}
 }
