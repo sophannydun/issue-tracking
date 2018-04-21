@@ -3,15 +3,11 @@ package com.issue.tracking.model;
 public class Issue {
 	private String issueName;
 
-	private String userId;
-
-	private int issueCategory;
-
-	private String users;
-
 	private String issueStatus;
 
-	private int categoryId;
+	private String userId;
+
+	private String categoryId;
 
 	private String issueId;
 
@@ -27,14 +23,12 @@ public class Issue {
 		super();
 	}
 
-	public Issue(String issueName, String userId, int issueCategory, String users, String issueStatus, int categoryId,
-			String issueId, String departmentId, String updateDate, String issuedDate, String issueDetail) {
+	public Issue(String issueName, String issueStatus, String userId, String categoryId, String issueId,
+			String departmentId, String updateDate, String issuedDate, String issueDetail) {
 		super();
 		this.issueName = issueName;
-		this.userId = userId;
-		this.issueCategory = issueCategory;
-		this.users = users;
 		this.issueStatus = issueStatus;
+		this.userId = userId;
 		this.categoryId = categoryId;
 		this.issueId = issueId;
 		this.departmentId = departmentId;
@@ -51,30 +45,6 @@ public class Issue {
 		this.issueName = issueName;
 	}
 
-	public String getUserId() {
-		return userId;
-	}
-
-	public void setUserId(String userId) {
-		this.userId = userId;
-	}
-
-	public int getIssueCategory() {
-		return issueCategory;
-	}
-
-	public void setIssueCategory(int issueCategory) {
-		this.issueCategory = issueCategory;
-	}
-
-	public String getUsers() {
-		return users;
-	}
-
-	public void setUsers(String users) {
-		this.users = users;
-	}
-
 	public String getIssueStatus() {
 		return issueStatus;
 	}
@@ -83,11 +53,19 @@ public class Issue {
 		this.issueStatus = issueStatus;
 	}
 
-	public int getCategoryId() {
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+
+	public String getCategoryId() {
 		return categoryId;
 	}
 
-	public void setCategoryId(int categoryId) {
+	public void setCategoryId(String categoryId) {
 		this.categoryId = categoryId;
 	}
 
@@ -133,10 +111,9 @@ public class Issue {
 
 	@Override
 	public String toString() {
-		return "Issue [issueName=" + issueName + ", userId=" + userId + ", issueCategory=" + issueCategory + ", users="
-				+ users + ", issueStatus=" + issueStatus + ", categoryId=" + categoryId + ", issueId=" + issueId
-				+ ", departmentId=" + departmentId + ", updateDate=" + updateDate + ", issuedDate=" + issuedDate
-				+ ", issueDetail=" + issueDetail + "]";
+		return "Issue [issueName=" + issueName + ", issueStatus=" + issueStatus + ", userId=" + userId + ", categoryId="
+				+ categoryId + ", issueId=" + issueId + ", departmentId=" + departmentId + ", updateDate=" + updateDate
+				+ ", issuedDate=" + issuedDate + ", issueDetail=" + issueDetail + "]";
 	}
 
 }
