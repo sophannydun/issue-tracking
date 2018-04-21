@@ -25,5 +25,9 @@ public class IssueController {
 		// return "issue/index";
 		return "issue/index";
 	}
+	@GetMapping("/issue/create")
+	public String createIssue() {
+		return "issue/createissue";
+	}
 
 }

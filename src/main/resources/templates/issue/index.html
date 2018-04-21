@@ -9,6 +9,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
+
 <title>Issue | IssueTracking</title>
 </head>
 
@@ -67,33 +68,20 @@
 										<div class="x_content">
 											<p class="text-muted font-13 m-b-30"></p>
 
-											<table id="datatable-responsive"
+											<table id="datatable-responsives"
 												class="table table-hover table-striped table-bordered dt-responsive nowrap"
 												cellspacing="0" width="100%">
 												<thead>
 													<tr>
-
-
 														<th>issueID</th>
 														<th>categoryID</th>
 														<th>userID</th>
 														<th>departmentID</th>
-														
 														<th>issueName</th>
 														<th>issueDetail</th>
-														
 														<th>issueStatus</th>
-														<th>issueCategory</th>
-														<th>users</th>
-														<th>issueStatus</th>
-
-
-
-
-														<th>updateDate</th>
 														<th>issuedDate</th>
-
-
+														<th>updateDate</th>
 													</tr>
 												</thead>
 												<tbody th:each="issue: ${issues}">
@@ -101,21 +89,17 @@
 														<td th:text="${issue.issueId}">1</td>
 														<td th:text="${issue.categoryId}">1</td>
 														<td th:text="${issue.userId}">1</td>
-														<td th:text="${issue.departmentId}">1</td>														
+														<td th:text="${issue.departmentId}">1</td>
 														<td th:text="${issue.issueName}">1</td>
-														<td th:text="${issue.issueDetail}">1</td>										
-
-														<td th:text="${issue.issueStatus}">1</td>											
-													
+														<td th:text="${issue.issueDetail}">1</td>
+														<td th:text="${issue.issueStatus}">1</td>
 														<td th:text="${issue.updateDate}">1</td>
 														<td th:text="${issue.issuedDate}">1</td>
-													
-														
-
 
 													</tr>
 												</tbody>
 											</table>
+
 										</div>
 									</form>
 								</div>
@@ -128,5 +112,7 @@
 			<!-- /page content -->
 		</div>
 	</div>
+
+	
 </body>
 </html>
