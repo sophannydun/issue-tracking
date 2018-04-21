@@ -21,7 +21,7 @@ public class IssueController {
 
 		List<Issue> issues = issueService.getAllIssues();
 		System.out.println(issues.toString());
-		// model.addAttribute("issues", issues);
+		model.addAttribute("issues", issues);
 		// return "issue/index";
 		return "issue/index";
 	}

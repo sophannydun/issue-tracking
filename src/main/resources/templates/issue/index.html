@@ -72,35 +72,45 @@
 												cellspacing="0" width="100%">
 												<thead>
 													<tr>
-														<th>issueName</th>
+
+
+														<th>issueID</th>
+														<th>categoryID</th>
 														<th>userID</th>
+														<th>departmentID</th>
+														
+														<th>issueName</th>
+														<th>issueDetail</th>
+														
+														<th>issueStatus</th>
 														<th>issueCategory</th>
 														<th>users</th>
 														<th>issueStatus</th>
-														<th>categoryID</th>
 
-														<th>issueID</th>
-														<th>departmentID</th>
+
+
+
 														<th>updateDate</th>
 														<th>issuedDate</th>
-														<th>issueStatus</th>
-														<th>issueDetail</th>
+
+
 													</tr>
 												</thead>
 												<tbody th:each="issue: ${issues}">
 													<tr>
+														<td th:text="${issue.issueId}">1</td>
+														<td th:text="${issue.categoryId}">1</td>
+														<td th:text="${issue.userId}">1</td>
+														<td th:text="${issue.departmentId}">1</td>														
 														<td th:text="${issue.issueName}">1</td>
-														<td th:text="${issue.userID}">1</td>
-														<td th:text="${issue.issueCategory}">1</td>
-														<td th:text="${issue.users}">1</td>
-														<td th:text="${issue.issueStatus}">1</td>
-														<td th:text="${issue.categoryID}">1</td>
-														<td th:text="${issue.issueID}">1</td>
-														<td th:text="${issue.departmentID}">1</td>
+														<td th:text="${issue.issueDetail}">1</td>										
+
+														<td th:text="${issue.issueStatus}">1</td>											
+													
 														<td th:text="${issue.updateDate}">1</td>
 														<td th:text="${issue.issuedDate}">1</td>
-														<td th:text="${issue.issueStatus}">1</td>
-														<td th:text="${issue.issueDetail}">1</td>
+													
+														
 
 
 													</tr>
