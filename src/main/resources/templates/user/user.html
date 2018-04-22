@@ -98,14 +98,14 @@
 													<td><span th:each="r: ${user.roles}"
 														th:text="${r.role}" class="label label-success"></span></td>
 													<td>
-														<form th:action="@{/user/remove}" th:method="delete">
+														<form th:action="@{/user/remove}" th:method="delete">										
 															<!-- <input type="hidden" name="_method" value="DELETE"> -->
-															<a class="btn btn-default btn-sm"
-																th:href="@{/user/{id}(id=${user.userId})}">View</a> <span>
+															<a class="btn btn-default btn-xs"
+																th:href="@{/user/{id}(id=${user.userId})}" >View</a> <span>
 																<input type="hidden" name="id" th:value="${user.userId}" />
-																<input class="btn btn-danger btn-sm" type="submit"
+																<input class="btn btn-danger btn-xs" type="submit"
 																value="Remove" />
-															</span> <a class="btn btn-warning btn-sm"
+															</span> <a class="btn btn-warning btn-xs"
 																th:href="@{/user/edit/{userId}(userId=${user.userId})}">Edit</a>
 														</form>
 													</td>
