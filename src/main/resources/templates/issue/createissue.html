@@ -81,11 +81,9 @@
 											<div
 												class="col-md-5 col-sm-4 col-xs-12 form-group has-feedback">
 												<select class="form-control">
-													<option>Choose Department</option>
-													<option>IT Department</option>
-													<option>Credit Department</option>
-													<option>Finance Department</option>
-													<option>Marketing</option>
+													<option >Choose Department</option>
+													<option  th:each="department: ${departments}" th:value="${department.departmentId}" th:text="${department.description}">IT Department</option>
+													
 												</select>
 											</div>
 
@@ -107,11 +105,8 @@
 												class="col-md-5 col-sm-4 col-xs-12 form-group has-feedback">
 												<select class="form-control">
 													<option>Choose IssueType</option>
-													<option>Tricube</option>
-													<option>Computer</option>
-													<option>Printer</option>
-													<option>Software</option>
-													<option>HardWare</option>
+													<option th:each="issueType: ${issueType}" th:value="${issueType.issueTypeId}" th:text="${issueType.description}">Tricube</option>
+													
 												</select>
 											</div>
 
