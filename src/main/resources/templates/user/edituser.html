@@ -4,7 +4,6 @@
 	layout:decorator="layouts/default">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<!-- Meta, title, CSS, favicons, etc. -->
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -58,85 +57,132 @@
 									</ul>
 									<div class="clearfix"></div>
 								</div>
+
 								<div class="x_content">
 									<div class="container">
-										<form class="form-horizontal" action="#" th:object="${user}">
-											<div class="row">
-												<div class="form-group">
-													<div class="col-sm-1">
-														<label class="control-label" for="userId">User ID:</label>
+										<div class="panel panel-default">
+											<!-- 	<div class="panel-heading">Basic Form Elements</div> -->
+											<div class="panel-body">
+												<form action="#" th:object="${user}">
+													<div class="row col-md-12">
+														<div class="row col-md-4">
+															<div class="form-group">
+																<label class="control-label col-md-5 col-sm-3 col-xs-12">User
+																	ID:</label><input type="text" class="form-control" id="userId"
+																	th:value="*{userId}" name="userId" readonly>
+															</div>
+														</div>
 													</div>
-													<div class="col-sm-4">
-														<input type="text" class="form-control" id="userId"
-															th:value="*{userId}" name="userId" readonly>
+													<div class="row col-md-12">
+														<div class="row col-md-4">
+															<div class="form-group">
+
+																<label class="control-label col-md-5 col-sm-3 col-xs-12"
+																	for="username">User Name:</label> <input type="text"
+																	class="form-control" id="User" th:value="*{username}"
+																	name="username">
+															</div>
+														</div>
 													</div>
-												</div>
+
+
+
+													<div class="row col-md-12">
+														<div class="row col-md-4">
+															<div class="form-group">
+																<label class="control-label col-sm-1" for="createby">Roles:</label>
+																<select class="form-control">
+																	<option>Choose Roles:</option>
+																	<option th:each="r : ${user.roles}"
+																		th:value="${r.roleid}" th:text="${r.role}">USER</option>
+																</select>
+															</div>
+														</div>
+													</div>
+													<div class="form-group">
+
+														<!-- <div class="col-sm-4">
+															<span th:each="r: ${user.roles}" th:text="${r.role}"
+																class="label label-success"></span>
+														</div> -->
+														<!-- <div class="row col-md-4">
+															<div class="form-group">
+																<select class="form-control">
+																	<option>Choose Roles:</option>
+																	<option th:each="r : ${user.roles}"
+																		th:value="${r.roleid}" th:text="${r.role}">USER</option>
+
+																</select> 
+															</div>
+														</div> -->
+													</div>
+													<div class="row col-md-12">
+														<div class="row col-md-4">
+															<div class="form-group">
+																<label class="control-label col-md-5 col-sm-3 col-xs-12"
+																	for="createby">Create By:</label> <input type="text"
+																	class="form-control" id="createby"
+																	th:value="*{createBy}" name="createby">
+															</div>
+														</div>
+													</div>
+													<div class="row col-md-12">
+														<div class="row col-md-4">
+															<div class="form-group">
+																<label class="control-label col-md-5 col-sm-3 col-xs-12"
+																	for="createby">Update By:</label> <input type="text"
+																	class="form-control" id="updateby"
+																	th:value="*{updateBy}" name="updateby">
+															</div>
+														</div>
+													</div>
+													<div class="row col-md-12">
+														<div class="row col-md-4">
+
+															<div class="form-group">
+																<label class="control-label col-md-5 col-sm-3 col-xs-12"
+																	for="createby">Create Date:</label> <input type="text"
+																	class="form-control" id="createdate"
+																	th:value="*{createDate}" name="createdate">
+
+															</div>
+														</div>
+													</div>
+													<div class="row col-md-12">
+														<div class="row col-md-4">
+															<div class="form-group">
+																<label class="control-label col-md-5 col-sm-3 col-xs-12"
+																	for="createby">Update Date:</label> <input type="text"
+																	class="form-control" id="updatedate"
+																	th:value="*{updateDate}" name="updatedate">
+															</div>
+														</div>
+													</div>
+													<div class="row col-md-12">
+														<div class="row col-md-6 col-offset-1">
+															<div class="form-group">
+																<span class="col-md-3 col-sm-3"> <a
+																	th:href="@{/user/edit/{id}(userId=${user.userId})}"
+																	class="btn btn-warning">Edit User</a>
+																</span> <span class="col-md-3 col-sm-3"> <a
+																	class="btn btn-primary" th:href="@{/user}">Users
+																		List</a>
+																</span>
+															</div>
+														</div>
+													</div>
+												</form>
 											</div>
-									<div class="form-group">
-										<label class="control-label col-sm-1" for="userId">User
-											ID:</label>
-										<div class="col-sm-4">
-											<input type="text" class="form-control" id="userId"
-												th:value="*{userId}" name="userId" readonly>
 										</div>
 									</div>
-									<div class="form-group">
-										<label class="control-label col-sm-1" for="username">User
-											Name:</label>
-										<div class="col-sm-4">
-											<input type="text" class="form-control" id="User"
-												th:value="*{username}" name="username">
-										</div>
-									</div>
-									<div class="form-group">
-										<label class="control-label col-sm-1" for="createby">Create
-											By:</label>
-										<div class="col-sm-4">
-											<input type="text" class="form-control" id="createby"
-												th:value="*{createBy}" name="createby">
-										</div>
-									</div>
-									<div class="form-group">
-										<label class="control-label col-sm-1" for="createby">Update
-											By:</label>
-										<div class="col-sm-4">
-											<input type="text" class="form-control" id="updateby"
-												th:value="*{updateBy}" name="updateby">
-										</div>
-									</div>
-									<div class="form-group">
-										<label class="control-label col-sm-1" for="createby">Create
-											Date:</label>
-										<div class="col-sm-4">
-											<input type="text" class="form-control" id="createdate"
-												th:value="*{createDate}" name="createdate">
-										</div>
-									</div>
-									<div class="form-group">
-										<label class="control-label col-sm-1" for="createby">Update
-											Date:</label>
-										<div class="col-sm-4">
-											<input type="text" class="form-control" id="updatedate"
-												th:value="*{updateDate}" name="updatedate">
-										</div>
-									</div>
-									<div class="form-group">
-										<div class="col-sm-offset-1 col-sm-3">
-											<a th:href="@{/user/edit/{id}(userId=${user.userId})}"
-												class="btn btn-warning">Edit User</a> <a
-												class="btn btn-primary" th:href="@{/user}">Users List</a>
-										</div>
-									</div>
-									</form>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
 
+			</div>
 		</div>
-	</div>
 	</div>
 </body>
 </html>

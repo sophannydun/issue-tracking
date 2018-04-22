@@ -46,5 +46,10 @@ public class UserController {
 			model.addAttribute("user",user);
 			return "/user/edituser";
 		}
+		
+		@GetMapping("/user/sbform")
+		public String sbForm(){
+			return "/user/sbform";
+		}
 
 }
