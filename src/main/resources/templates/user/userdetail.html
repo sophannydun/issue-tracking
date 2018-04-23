@@ -9,18 +9,17 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Add Role | IssueTracking</title>
+<title>User | IssueTracking</title>
 </head>
 
 <body class="nav-md">
 	<div class="container body">
 		<div class="main_container">
-
-			<div class="right_col" role="main" layout:fragment="content">
+			<div class="right_col" User="main" layout:fragment="content">
 				<div class="">
 					<div class="page-title">
 						<div class="title_left">
-							<h3>New Role</h3>
+							<h3>User</h3>
 						</div>
 
 						<div class="title_right">
@@ -42,15 +41,15 @@
 							<div class="x_panel">
 								<div class="x_title">
 									<h2>
-										Add New Role Information <small>No need to input Role ID</small>
+										Detail User Information <small>Detail User</small>
 									</h2>
 									<ul class="nav navbar-right panel_toolbox">
 										<li><a class="collapse-link"><i
 												class="fa fa-chevron-up"></i></a></li>
 										<li class="dropdown"><a href="#" class="dropdown-toggle"
-											data-toggle="dropdown" role="button" aria-expanded="false"><i
+											data-toggle="dropdown" User="button" aria-expanded="false"><i
 												class="fa fa-wrench"></i></a>
-											<ul class="dropdown-menu" role="menu">
+											<ul class="dropdown-menu" User="menu">
 												<li><a href="#">Settings 1</a></li>
 												<li><a href="#">Settings 2</a></li>
 											</ul></li>
@@ -61,48 +60,68 @@
 								</div>
 								<div class="x_content">
 									<div class="container">
-										<form class="form-horizontal" action="/roles/addRole" method="post">
+										<form class="form-horizontal" action="#" th:object="${user}">
 											<div class="form-group">
-												<label class="control-label col-sm-2" for="roleid">Role ID:</label>
+												<label class="control-label col-sm-1" for="userId">User ID:</label>
 												<div class="col-sm-4">
-													<input type="text" class="form-control" id="roleid" name="roleid">
+													<input type="text" class="form-control" id="userId" th:value="*{userId}" name="userId" readonly>
 												</div>
 											</div>
 											<div class="form-group">
-												<label class="control-label col-sm-2" for="role">Role:</label>
+												<label class="control-label col-sm-1" for="username">User
+													Name:</label>
 												<div class="col-sm-4">
-													<input type="text" class="form-control" id="role" name="role">
+													<input type="text" class="form-control" id="User"
+														th:value="*{username}" name="username" readonly>
 												</div>
 											</div>
 											<div class="form-group">
-												<label class="control-label col-sm-2" for="createby">Create By:</label>
+												<label class="control-label col-sm-1" for="createby">Roles:</label>
 												<div class="col-sm-4">
-													<input type="text" class="form-control" id="createby" name="createby">
+													<span th:each="r: ${user.roles}"
+														th:text="${r.role}" class="label label-success"></span></td>
+													<!-- <input type="text" class="form-control" id="updatedate"
+														th:value="*{updateDate}" name="updatedate" readonly> -->
 												</div>
 											</div>
 											<div class="form-group">
-												<label class="control-label col-sm-2" for="createby">Update By:</label>
+												<label class="control-label col-sm-1" for="createby">Create
+													By:</label>
 												<div class="col-sm-4">
-													<input type="text" class="form-control" id="updateby"  name="updateby">
-												</div>
-											</div>
-												<div class="form-group">
-												<label class="control-label col-sm-2" for="createby">Create Date:</label>
-												<div class="col-sm-4">
-													<input type="text" class="form-control" id="createdate" name="createdate">
+													<input type="text" class="form-control" id="createby"
+														th:value="*{createBy}" name="createby" readonly>
 												</div>
 											</div>
 											<div class="form-group">
-												<label class="control-label col-sm-2" for="createby" >Update Date:</label>
+												<label class="control-label col-sm-1" for="createby">Update
+													By:</label>
 												<div class="col-sm-4">
-													<input type="text" class="form-control" id="updatedate" name="updatedate" data-provide="datepicker">
+													<input type="text" class="form-control" id="updateby"
+														th:value="*{updateBy}" name="updateby" readonly>
 												</div>
 											</div>
 											<div class="form-group">
-												<div class="col-sm-offset-2 col-sm-2">
-													<input type="submit" class="form-control btn btn-primary btn-sm" id="createUser" name="createUser" value="Create">
+												<label class="control-label col-sm-1" for="createby">Create
+													Date:</label>
+												<div class="col-sm-4">
+													<input type="text" class="form-control" id="createdate"
+														th:value="*{createDate}" name="createdate" readonly>
 												</div>
-												<a class="btn btn-default btn-sm" href="/roles">Roles List</a>
+											</div>
+											<div class="form-group">
+												<label class="control-label col-sm-1" for="createby">Update
+													Date:</label>
+												<div class="col-sm-4">
+													<input type="text" class="form-control" id="updatedate"
+														th:value="*{updateDate}" name="updatedate" readonly>
+												</div>
+											</div>
+											<div class="form-group">
+												<div class="col-sm-offset-1 col-sm-4">
+													<a th:href="@{/user/edit/{userId}(userId=${user.userId})}"
+														class="btn btn-warning btn-sm">Edit User</a> <a
+														class="btn btn-primary btn-sm" th:href="@{/user}">Users List</a>
+												</div>
 											</div>
 										</form>
 									</div>
@@ -114,13 +133,6 @@
 
 			</div>
 		</div>
-		<!-- /page content -->
 	</div>
-	<script>
-			$('.createdate').datepicker({
-			    startDate: '-3d'
-			});
-	
-	</script>
 </body>
 </html>
