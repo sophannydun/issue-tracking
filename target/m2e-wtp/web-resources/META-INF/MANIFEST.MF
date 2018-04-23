@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
 Implementation-Title: issue-tracking
 Implementation-Version: 0.0.1-SNAPSHOT
-Built-By: QSPN
+Built-By: sophanny.dun
 Implementation-Vendor-Id: com.issue.tracking
-Build-Jdk: 1.8.0_151
+Build-Jdk: 1.8.0_111
 Implementation-URL: http://projects.spring.io/spring-boot/spring-homew
  ork/
 Created-By: Maven Integration for Eclipse
