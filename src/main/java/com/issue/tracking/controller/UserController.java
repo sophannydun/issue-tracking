@@ -9,7 +9,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import com.issue.tracking.model.Role;
 import com.issue.tracking.model.User;
+import com.issue.tracking.repository.retrofit.service.RoleServiceRetrofitImp;
 import com.issue.tracking.repository.retrofit.service.UserServiceRetrofitImp;
 
 
@@ -18,6 +20,8 @@ import com.issue.tracking.repository.retrofit.service.UserServiceRetrofitImp;
 public class UserController {
 	@Autowired
 	private UserServiceRetrofitImp userServiceRetrofitImp;
+	@Autowired
+	private RoleServiceRetrofitImp roleServiceRetrofit;
 	List<User> users;
 	User user;
 	// @RequestMapping(value="/index")
@@ -40,10 +44,13 @@ public class UserController {
 		@GetMapping("/user/edit/{userId}")
 		public String userEdit(@PathVariable(value="userId") Integer userId, Model model) throws IOException{
 			user=userServiceRetrofitImp.findUserById(userId);
+			List<Role> roles=roleServiceRetrofit.getAllRoles();
 			if(user==null){
 				model.addAttribute("user", new User());
+				model.addAttribute("roles", new Role());
 			}
 			model.addAttribute("user",user);
+			model.addAttribute("roles", roles);
 			return "/user/edituser";
 		}
 		
