@@ -31,4 +31,10 @@ public class UserServiceRetrofitImp {
 			System.out.println(jsonUser.body());
 		return user;
 	}
+	public Boolean createUser(User user) throws IOException{
+		Response<Boolean> jsonUser=userServiceRetrofit.createUser(user).execute();
+		Boolean b=jsonUser.body();
+		System.out.println(jsonUser.body());
+	return b;
+}
 }

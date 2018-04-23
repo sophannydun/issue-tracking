@@ -40,7 +40,7 @@
 							<div class="x_panel">
 								<div class="x_title">
 									<h2>
-										Detail User Information <small>Detail User</small>
+										Add New User<small>Enter new User information</small>
 									</h2>
 									<ul class="nav navbar-right panel_toolbox">
 										<li><a class="collapse-link"><i
@@ -63,13 +63,13 @@
 										<div class="panel panel-default">
 											<!-- 	<div class="panel-heading">Basic Form Elements</div> -->
 											<div class="panel-body">
-												<form action="#" th:object="${user}">
+												<form action="/user/addUser" method="post">
 													<div class="row col-md-12">
 														<div class="row col-md-4">
 															<div class="form-group">
 																<label class="control-label col-md-5 col-sm-3 col-xs-12">User
 																	ID:</label><input type="text" class="form-control" id="userId"
-																	th:value="*{userId}" name="userId" readonly>
+																	value="1" name="userId" readonly>
 															</div>
 														</div>
 													</div>
@@ -78,7 +78,7 @@
 															<div class="form-group">
 																<label class="control-label col-md-5 col-sm-3 col-xs-12">Department
 																	ID:</label><input type="text" class="form-control"
-																	id="departmentId" th:value="*{departmentId}" name="departmentId">
+																	id="departmentId" value="1" name="departmentId">
 															</div>
 														</div>
 													</div>
@@ -87,7 +87,7 @@
 															<div class="form-group">
 																<label class="control-label col-md-5 col-sm-3 col-xs-12">Branch
 																	ID:</label><input type="text" class="form-control"
-																	id="branchId" th:value="*{branchId}" name="branchId">
+																	id="branchId" value="1" name="branchId">
 															</div>
 														</div>
 													</div>
@@ -97,41 +97,16 @@
 
 																<label class="control-label col-md-5 col-sm-3 col-xs-12"
 																	for="username">User Name:</label> <input type="text"
-																	class="form-control" id="username" th:value="*{username}"
-																	name="username">
+																	class="form-control" id="username" name="username">
 															</div>
 														</div>
 													</div>
-													<!-- Old User roles with Multi Select -->
-													<!-- <div class="row col-md-12">
-														<div class="row col-md-4">
-															<div class="form-group">
-																<label class="control-label col-sm-1" for="createby">Roles:</label>
-																<select multiple size="3" class="form-control">
-																	<option>Choose Roles:</option>
-																	<option th:each="r : ${user.roles}"
-																		th:value="${r.roleid}" th:text="${r.role}">USER</option>
-																</select>
-															</div>
-														</div>
-													</div> -->
 													<div class="row col-md-12">
 														<div class="row col-md-4">
 															<div class="form-group">
-																<label class="control-label col-md-4 col-sm-3 col-xs-12"
-																	for="createby">Old User Roles:</label> <span
-																	th:each="r: ${user.roles}" th:text="${r.role}"
-																	class="label label-success"></span>
-															</div>
-														</div>
-													</div>
-
-													<div class="row col-md-12">
-														<div class="row col-md-4">
-															<div class="form-group">
-																<label class="control-label col-md-5 col-sm-3 col-xs-12" for="createby">All
-																	Roles:</label> <select multiple size="3" class="form-control">
-																	<!-- <option>Choose Roles:</option> -->
+																<label class="control-label col-md-5 col-sm-3 col-xs-12"
+																	for="createby">All Roles:</label> <select multiple
+																	size="3" class="form-control " name="roleIds">
 																	<option th:each="r : ${roles}" th:value="${r.roleid}"
 																		th:text="${r.role}">Role</option>
 																</select>
@@ -141,10 +116,17 @@
 													<div class="row col-md-12">
 														<div class="row col-md-4">
 															<div class="form-group">
+																<label class="control-label col-md-5 col-sm-3 col-xs-12">Password</label><input type="text" class="form-control"
+																	id="password" value="12345" name="password">
+															</div>
+														</div>
+													</div>
+													<div class="row col-md-12">
+														<div class="row col-md-4">
+															<div class="form-group">
 																<label class="control-label col-md-5 col-sm-3 col-xs-12"
 																	for="createby">Create By:</label> <input type="text"
-																	class="form-control" id="createby"
-																	th:value="*{createBy}" name="createby">
+																	class="form-control" id="createBy" name="createBy">
 															</div>
 														</div>
 													</div>
@@ -153,8 +135,7 @@
 															<div class="form-group">
 																<label class="control-label col-md-5 col-sm-3 col-xs-12"
 																	for="createby">Update By:</label> <input type="text"
-																	class="form-control" id="updateby"
-																	th:value="*{updateBy}" name="updateby">
+																	class="form-control" id="updateBy" name="updateBy">
 															</div>
 														</div>
 													</div>
@@ -164,8 +145,7 @@
 															<div class="form-group">
 																<label class="control-label col-md-5 col-sm-3 col-xs-12"
 																	for="createby">Create Date:</label> <input type="text"
-																	class="form-control" id="createdate"
-																	th:value="*{createDate}" name="createdate">
+																	class="form-control" id="createDate" name="createDate">
 
 															</div>
 														</div>
@@ -175,19 +155,18 @@
 															<div class="form-group">
 																<label class="control-label col-md-5 col-sm-3 col-xs-12"
 																	for="createby">Update Date:</label> <input type="text"
-																	class="form-control" id="updatedate"
-																	th:value="*{updateDate}" name="updatedate">
+																	class="form-control" id="updateDate" name="updateDate">
 															</div>
 														</div>
 													</div>
 													<div class="row col-md-12">
 														<div class="row col-md-6 col-offset-1">
 															<div class="form-group">
-																<span class="col-md-2 col-sm-3"> <a
-																	th:href="@{/user/edit/{id}(userId=${user.userId})}"
-																	class="btn btn-warning btn-sm">Edit User</a>
-																</span> <span class="col-md-3 col-sm-3"> <a
-																	class="btn btn-primary btn-sm" th:href="@{/user}">Users
+																<span class="col-md-3 col-sm-3 col-xs-6"> <input
+																	type="submit" class=" btn btn-primary btn-sm"
+																	id="createUser" name="createUser" value="Create User" />
+																</span> <span class="col-md-3 col-sm-3 col-xs-6"> <a
+																	class="btn btn-default btn-sm" th:href="@{/user}">Users
 																		List</a>
 																</span>
 															</div>
