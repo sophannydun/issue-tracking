@@ -103,14 +103,14 @@
 													<td>
 														<div class="row">
 															<div class="col-xs-3 col-md-3">
-																<a class="btn btn-info btn-sm"
+																<a class="btn btn-info btn-xs"
 																	th:href="@{/roles/{id}(id=${r.roleid})}">View</a>
 															</div>
 															<div class="col-xs-3 col-md-3">
 															<!-- calling RoleController call RoleServiceImp via PathVariable that calling API @PathVariable in Retrofit use @Path -->
 															<form th:action="@{/roles/remove/{id}(id=${r.roleid})}"
 																th:method="delete">
-																<input class="btn btn-danger btn-sm" type="submit"
+																<input class="btn btn-danger btn-xs" type="submit"
 																	value="Delete" />
 															</form>
 															</div>
@@ -124,7 +124,7 @@
 															<!-- <a class="btn btn-warning btn-sm"
 																	th:href="@{/role/edit(id=${r.roleid})}">Edit</a>  -->
 															<div class="col-xs-3 col-md-3">
-															<a class="btn btn-warning btn-sm"
+															<a class="btn btn-warning btn-xs"
 																th:href="@{/roles/edit/{id}(id=${r.roleid})}">Edit</a>
 															</div>
 															

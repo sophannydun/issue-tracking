@@ -58,6 +58,11 @@ public class Role implements GrantedAuthority {
 		this.updatedate = updatedate;
 	}
 
+
+	public Role(int roleid) {
+		this.roleid = roleid;
+	}
+
 	public Role(int roleid, String role, String createby, String updateby, String createdate, String updatedate) {
 		super();
 		this.roleid = roleid;

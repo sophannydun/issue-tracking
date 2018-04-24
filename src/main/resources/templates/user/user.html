@@ -61,7 +61,7 @@
 									<div class="clearfix"></div>
 								</div>
 								<div class="x_content">
-									<a class="btn btn-default" href="/roles/addRole"><b>Add
+									<a class="btn btn-default" href="/user/addUser"><b>Add
 											New User</b></a>
 									<!-- <a class="btn btn-info" th:href="@{/roles/addRole}">Add New Role</a>  -->
 									<!-- 	<button type="button" class="btn btn-secondary">Secondary</button> -->
@@ -98,11 +98,11 @@
 													<td><span th:each="r: ${user.roles}"
 														th:text="${r.role}" class="label label-success"></span></td>
 													<td>
-														<form th:action="@{/user/remove}" th:method="delete">										
+														<form th:action="@{/user/remove/{userId}(userId=${user.userId})}" th:method="delete">										
 															<!-- <input type="hidden" name="_method" value="DELETE"> -->
 															<a class="btn btn-default btn-xs"
 																th:href="@{/user/{id}(id=${user.userId})}" >View</a> <span>
-																<input type="hidden" name="id" th:value="${user.userId}" />
+																<!-- <input type="hidden" name="id" th:value="${user.userId}" /> -->
 																<input class="btn btn-danger btn-xs" type="submit"
 																value="Remove" />
 															</span> <a class="btn btn-warning btn-xs"
