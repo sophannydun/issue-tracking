@@ -40,7 +40,7 @@
 							<div class="x_panel">
 								<div class="x_title">
 									<h2>
-										Detail User Information <small>Detail User</small>
+										Update User Information <small>Edit User</small>
 									</h2>
 									<ul class="nav navbar-right panel_toolbox">
 										<li><a class="collapse-link"><i
@@ -63,7 +63,7 @@
 										<div class="panel panel-default">
 											<!-- 	<div class="panel-heading">Basic Form Elements</div> -->
 											<div class="panel-body">
-												<form action="#" th:object="${user}">
+												<form th:action="@{/user/edit}" th:method="put" th:object="${user}">
 													<div class="row col-md-12">
 														<div class="row col-md-4">
 															<div class="form-group">
@@ -130,7 +130,7 @@
 														<div class="row col-md-4">
 															<div class="form-group">
 																<label class="control-label col-md-5 col-sm-3 col-xs-12" for="createby">All
-																	Roles:</label> <select multiple size="3" class="form-control">
+																	Roles:</label> <select multiple size="3" class="form-control" name="roleIds">
 																	<!-- <option>Choose Roles:</option> -->
 																	<option th:each="r : ${roles}" th:value="${r.roleid}"
 																		th:text="${r.role}">Role</option>
@@ -141,10 +141,18 @@
 													<div class="row col-md-12">
 														<div class="row col-md-4">
 															<div class="form-group">
+																<label class="control-label col-md-5 col-sm-3 col-xs-12">Password</label><input type="text" class="form-control"
+																	id="password" value="12345" name="password">
+															</div>
+														</div>
+													</div>
+													<div class="row col-md-12">
+														<div class="row col-md-4">
+															<div class="form-group">
 																<label class="control-label col-md-5 col-sm-3 col-xs-12"
 																	for="createby">Create By:</label> <input type="text"
 																	class="form-control" id="createby"
-																	th:value="*{createBy}" name="createby">
+																	th:value="*{createBy}" name="createBy">
 															</div>
 														</div>
 													</div>
@@ -154,7 +162,7 @@
 																<label class="control-label col-md-5 col-sm-3 col-xs-12"
 																	for="createby">Update By:</label> <input type="text"
 																	class="form-control" id="updateby"
-																	th:value="*{updateBy}" name="updateby">
+																	th:value="*{updateBy}" name="updateBy">
 															</div>
 														</div>
 													</div>
@@ -165,7 +173,7 @@
 																<label class="control-label col-md-5 col-sm-3 col-xs-12"
 																	for="createby">Create Date:</label> <input type="text"
 																	class="form-control" id="createdate"
-																	th:value="*{createDate}" name="createdate">
+																	th:value="*{createDate}" name="createDate">
 
 															</div>
 														</div>
@@ -176,16 +184,15 @@
 																<label class="control-label col-md-5 col-sm-3 col-xs-12"
 																	for="createby">Update Date:</label> <input type="text"
 																	class="form-control" id="updatedate"
-																	th:value="*{updateDate}" name="updatedate">
+																	th:value="*{updateDate}" name="updateDate">
 															</div>
 														</div>
 													</div>
 													<div class="row col-md-12">
 														<div class="row col-md-6 col-offset-1">
 															<div class="form-group">
-																<span class="col-md-2 col-sm-3"> <a
-																	th:href="@{/user/edit/{id}(userId=${user.userId})}"
-																	class="btn btn-warning btn-sm">Edit User</a>
+																<span class="col-md-2 col-sm-3"> 
+																<input class="btn btn-primary btn-sm" type="submit" value="Update" />
 																</span> <span class="col-md-3 col-sm-3"> <a
 																	class="btn btn-primary btn-sm" th:href="@{/user}">Users
 																		List</a>

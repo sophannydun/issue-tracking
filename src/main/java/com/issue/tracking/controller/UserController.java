@@ -7,9 +7,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.issue.tracking.model.Role;
@@ -43,22 +45,8 @@ public class UserController {
 		model.addAttribute("user", user);
 		return "/user/userdetail";
 	}
-
-	@PostMapping("/user/addUser")
-	public String addUser(@RequestParam(value = "roleIds", required = false, defaultValue = "1") Integer[] roleIds,
-			Model model, User user) throws IOException {
-		List<Role> roles = new ArrayList<>();
-		for (Integer rId : roleIds) {
-			roles.add(new Role(rId));
-		}
-		user.setRoles(roles);
-		System.out.println(user);
-		userServiceRetrofitImp.createUser(user);
-		return "redirect:/user";
-	}
-
 	@GetMapping("/user/addUser")
-	public String actionAddUser(Model model) throws IOException {
+	public String addUser(Model model) throws IOException {
 		List<Role> roles = roleServiceRetrofit.getAllRoles();
 		if (user == null) {
 			model.addAttribute("roles", new Role());
@@ -66,6 +54,32 @@ public class UserController {
 		model.addAttribute("roles", roles);
 		return "/user/adduser";
 	}
+	@PostMapping("/user/addUser")
+	public String actionAddUser(@RequestParam(value = "roleIds", required = false, defaultValue = "1") Integer[] roleIds,
+			Model model, User user) throws IOException {
+		List<Role> roles = new ArrayList<>();
+		for (Integer rId : roleIds) {
+			roles.add(new Role(rId));
+		}
+		user.setRoles(roles);
+		System.out.println("Client from html User New: " + user);
+		userServiceRetrofitImp.createUser(user);
+		return "redirect:/user";
+	}
+	
+	@PutMapping("/user/edit")
+	public String actionUpdateUserByUserId(@RequestParam(value = "roleIds", required = false, defaultValue = "1") Integer[] roleIds,
+			Model model, User user) throws IOException {
+		List<Role> roles = new ArrayList<>();
+		for (Integer rId : roleIds) {
+			roles.add(new Role(rId));
+		}
+		user.setRoles(roles);
+		System.out.println("Client from html User New: " + user);
+		userServiceRetrofitImp.updateUserByUserId(user);
+		return "redirect:/user";
+	}
+	
 
 	@GetMapping("/user/edit/{userId}")
 	public String userEdit(@PathVariable(value = "userId") Integer userId, Model model) throws IOException {
@@ -84,5 +98,13 @@ public class UserController {
 	public String sbForm() {
 		return "/user/sbform";
 	}
-
+	
+	@DeleteMapping("/user/remove/{userId}")
+	public String deleteUserByUserId(@PathVariable ("userId") Integer userId) throws IOException{
+		Boolean status=false;
+		System.out.println(status +" Removed "+ userId);
+		status=userServiceRetrofitImp.deleteUserByUserId(userId);
+		System.out.println(status +" Removed "+ userId);
+		return "redirect:/user";
+	}
 }

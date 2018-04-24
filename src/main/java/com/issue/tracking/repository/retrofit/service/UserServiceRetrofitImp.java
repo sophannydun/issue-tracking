@@ -17,24 +17,39 @@ public class UserServiceRetrofitImp {
 	public UserServiceRetrofitImp(Retrofit retrofit) {
 		this.userServiceRetrofit = retrofit.create(UserServiceRetrofit.class);
 	}
-	public List<User> getAllUsers() throws IOException{
+
+	public List<User> getAllUsers() throws IOException {
 		Response<List<User>> jsonUser = userServiceRetrofit.getAllUsers().execute();
-		List<User> users=jsonUser.body();
+		List<User> users = jsonUser.body();
 		for (User user : users) {
 			System.out.println(user.toString());
 		}
 		return users;
 	}
-	public User findUserById(Integer userId) throws IOException{
-			Response<User> jsonUser=userServiceRetrofit.findUserById(userId).execute();
-			User user=jsonUser.body();
-			System.out.println(jsonUser.body());
+
+	public User findUserById(Integer userId) throws IOException {
+		Response<User> jsonUser = userServiceRetrofit.findUserById(userId).execute();
+		User user = jsonUser.body();
+		System.out.println(jsonUser.body());
 		return user;
 	}
-	public Boolean createUser(User user) throws IOException{
-		Response<Boolean> jsonUser=userServiceRetrofit.createUser(user).execute();
-		Boolean b=jsonUser.body();
+
+	public Boolean createUser(User user) throws IOException {
+		Response<Boolean> jsonUser = userServiceRetrofit.createUser(user).execute();
+		Boolean b = jsonUser.body();
+		System.out.println(jsonUser.body() + "Created user...");
+		return b;
+	}
+	public Boolean deleteUserByUserId(Integer userId) throws IOException {
+		Response<Boolean> jsonUser = userServiceRetrofit.deleteUserByUserId(userId).execute();
+		Boolean b = jsonUser.body();
 		System.out.println(jsonUser.body());
-	return b;
-}
+		return b;
+	}
+	public Boolean updateUserByUserId(User user) throws IOException {
+		Response<Boolean> jsonUser = userServiceRetrofit.updateUserByUserId(user).execute();
+		Boolean b = jsonUser.body();
+		System.out.println(jsonUser.body() + " Updatd user...");
+		return b;
+	}
 }

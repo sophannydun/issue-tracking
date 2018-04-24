@@ -62,52 +62,60 @@
 								</div>
 								<div class="x_content">
 									<div class="container">
-										<form class="form-horizontal" th:action="@{/roles/edit}" th:method="put">
+										<form class="form-horizontal" th:action="@{/roles/edit}"
+											th:method="put">
 											<div class="form-group" th:object="${role}">
-												<label class="control-label col-sm-2" for="roleid">Role ID:</label>
+												<label class="control-label col-sm-2" for="roleid">Role
+													ID:</label>
 												<div class="col-sm-10">
-													<input type="text" class="form-control" id="roleid" th:value="*{roleid}" name="roleid" readonly>
+													<input type="text" class="form-control" id="roleid"
+														th:value="*{roleid}" name="roleid" readonly>
 												</div>
 											</div>
 											<div class="form-group">
 												<label class="control-label col-sm-2" for="role">Role:</label>
 												<div class="col-sm-10">
 													<input type="text" class="form-control" id="role"
-														th:value="${role.role}" name="role" >
+														th:value="${role.role}" name="role">
 												</div>
 											</div>
 											<div class="form-group">
-												<label class="control-label col-sm-2" for="createby">Create By:</label>
+												<label class="control-label col-sm-2" for="createby">Create
+													By:</label>
 												<div class="col-sm-10">
 													<input type="text" class="form-control" id="createby"
-														th:value="${role.createby}" name="createby" >
+														th:value="${role.createby}" name="createby">
 												</div>
 											</div>
 											<div class="form-group">
-												<label class="control-label col-sm-2" for="createby">Update By:</label>
+												<label class="control-label col-sm-2" for="createby">Update
+													By:</label>
 												<div class="col-sm-10">
 													<input type="text" class="form-control" id="updateby"
-														th:value="${role.updateby}" name="updateby" >
-												</div>
-											</div>
-												<div class="form-group">
-												<label class="control-label col-sm-2" for="createby">Create Date:</label>
-												<div class="col-sm-10">
-													<input type="text" class="form-control" id="createdate"
-														th:value="${role.createdate}" name="createdate" >
+														th:value="${role.updateby}" name="updateby">
 												</div>
 											</div>
 											<div class="form-group">
-												<label class="control-label col-sm-2" for="createby">Update Date:</label>
+												<label class="control-label col-sm-2" for="createby">Create
+													Date:</label>
+												<div class="col-sm-10">
+													<input type="text" class="form-control" id="createdate"
+														th:value="${role.createdate}" name="createdate">
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="control-label col-sm-2" for="createby">Update
+													Date:</label>
 												<div class="col-sm-10">
 													<input type="text" class="form-control" id="updatedate"
-														th:value="${role.updatedate}" name="updatedate" >
+														th:value="${role.updatedate}" name="updatedate">
 												</div>
 											</div>
 											<div class="form-group">
 												<div class="col-sm-offset-1 col-sm-4">
-													 <input class="btn btn-primary btn-sm" type="submit" value="Update" />										
-													<a class="btn btn-default btn-sm" th:href="@{/roles}">Roles List</a>
+													<input class="btn btn-primary btn-sm" type="submit"
+														value="Update" /> <a class="btn btn-default btn-sm"
+														th:href="@{/roles}">Roles List</a>
 												</div>
 											</div>
 										</form>
