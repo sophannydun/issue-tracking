@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.issue.tracking.model.Issue;
+import com.issue.tracking.repository.retrofit.repository.IssueServiceClient;
 
 import retrofit2.Response;
 import retrofit2.Retrofit;

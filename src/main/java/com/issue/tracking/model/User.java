@@ -1,7 +1,11 @@
 package com.issue.tracking.model;
 
+import java.util.Collection;
 import java.util.List;
-public class User {
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+public class User implements UserDetails {
 	private int userId;
 	private String username;
 	private String password;
@@ -100,5 +104,30 @@ public class User {
 				+ ", updateBy=" + updateBy + ", createDate=" + createDate + ", updateDate=" + updateDate
 				+ ", department=" + department + ", branch=" + branch + ", roles=" + roles + "]";
 	}
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		return roles;
+	}
+	@Override
+	public boolean isAccountNonExpired() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+	@Override
+	public boolean isAccountNonLocked() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+	@Override
+	public boolean isCredentialsNonExpired() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+	@Override
+	public boolean isEnabled() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
 	
 }

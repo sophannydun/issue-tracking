@@ -4,10 +4,12 @@ import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.issue.tracking.model.User;
 import com.issue.tracking.repository.retrofit.service.UserServiceRetrofitImp;
@@ -50,6 +52,16 @@ public class UserController {
 		@GetMapping("/user/sbform")
 		public String sbForm(){
 			return "/user/sbform";
+		}
+		
+		@Autowired
+		private UserDetailsService userDetailService;
+		
+		@GetMapping("/user/userDetail")
+		public String loadUserByUsername(@RequestParam("username") String username) {
+			User user=(User) userDetailService.loadUserByUsername(username);
+			System.out.println("Client Controller User-> " +user);
+			return "user/user";
 		}
 
 }

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.issue.tracking.model.Role;
 import com.issue.tracking.model.RoleCustomResponse;
+import com.issue.tracking.repository.retrofit.repository.RoleServiceRetrofit;
 
 import retrofit2.Response;
 import retrofit2.Retrofit;

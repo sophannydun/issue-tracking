@@ -1,4 +1,4 @@
-package com.issue.tracking.repository.retrofit.service;
+package com.issue.tracking.repository.retrofit.repository;
 
 import java.util.List;
 

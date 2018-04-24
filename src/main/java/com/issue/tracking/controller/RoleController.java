@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.issue.tracking.model.Role;
-import com.issue.tracking.repository.retrofit.service.RoleServiceRetrofit;
+import com.issue.tracking.repository.retrofit.repository.RoleServiceRetrofit;
 import com.issue.tracking.repository.retrofit.service.RoleServiceRetrofitImp;
 
 @Controller
