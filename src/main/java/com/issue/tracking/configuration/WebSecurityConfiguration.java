@@ -8,6 +8,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 //enable web security
 @Configuration
@@ -26,21 +27,28 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		// redirect user to formLogin if user trying to access protected resource
-		// http.formLogin();
-		/*
-		 * http.formLogin() .usernameParameter("username")
-		 * .passwordParameter("password") .loginPage("/login"); //make user can logout
-		 * by type /logout after root url http.logout() .logoutRequestMatcher(new
-		 * AntPathRequestMatcher("/logout"));
-		 */
-
+		
+		// To open from login
+		http.formLogin();
+/*//				.usernameParameter("username")
+//				.passwordParameter("password")
+//				// custom login page
+//				.loginPage("/login").permitAll();
+*/		
+		//logout
+			/*	http.logout()
+					.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+					.logoutSuccessUrl("/");
+*/
 		// Enable Basic Web Security authentication
-		http.httpBasic();
+		//http.httpBasic();
 		// disable token generate from server for client that don't have token like
 		// mobile for web service
 		http.csrf().disable();
 		// secure end point URL
-		http.authorizeRequests().anyRequest().authenticated();
+		http.authorizeRequests()
+								.anyRequest()
+								.authenticated();
 		// .antMatchers("/api/**").hasRole("admin");
 		// API not Store Session or anything that is STATELESS API
 		http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);

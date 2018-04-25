@@ -3,6 +3,10 @@ package com.issue.tracking.model;
 import org.springframework.security.core.GrantedAuthority;
 
 public class Role implements GrantedAuthority {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int roleid;
 	private String role;
 	private String createby;
@@ -94,7 +98,6 @@ public class Role implements GrantedAuthority {
 
 	@Override
 	public String getAuthority() {
-
 		return "ROLE_" + role;
 	}
 }
