@@ -30,11 +30,11 @@ public class UserDetailServiceImp implements UserDetailsService {
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
 		Response<User> jsonUsers;
-		User user=null;
+		UserDetails user=null;
 		try {
 			jsonUsers = userServiceRetrofit.loadUserByUsername(username).execute();
 			 user = jsonUsers.body();
-			System.out.println(user);
+			System.out.println("Retofit Service "+ user.getAuthorities());
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
