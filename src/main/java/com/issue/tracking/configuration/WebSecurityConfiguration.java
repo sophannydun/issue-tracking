@@ -29,36 +29,30 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 		// To open from login
 
-
 		// logout
 		/*
 		 * http.logout() .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
 		 * .logoutSuccessUrl("/");
 		 */
 
+		/*
+		 * http.formLogin() .usernameParameter("username")
+		 * .passwordParameter("password") // custom login page
+		 * .loginPage("/login").permitAll();
+		 */
 
-		/*http.formLogin()
-				.usernameParameter("username")
-				.passwordParameter("password")
-				// custom login page
-				.loginPage("/login").permitAll();*/
-		
-		//logout
-			/*	http.logout()
-					.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-					.logoutSuccessUrl("/");
-
-		// Enable Basic Web Security authentication
-		http.httpBasic();
-		// disable token generate from server for client that don't have token like
-		// mobile for web service
-		http.csrf().disable();
-		// secure end point URL
-
-		http.authorizeRequests()
-								.anyRequest()
-								.authenticated();
-		/*.antMatchers("/api/**").hasRole("admin");*/
+		// logout
+		/*
+		 * http.logout() .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+		 * .logoutSuccessUrl("/");
+		 * 
+		 * // Enable Basic Web Security authentication http.httpBasic(); // disable
+		 * token generate from server for client that don't have token like // mobile
+		 * for web service http.csrf().disable(); // secure end point URL
+		 * 
+		 * http.authorizeRequests() .anyRequest() .authenticated();
+		 * /*.antMatchers("/api/**").hasRole("admin");
+		 */
 
 		// API not Store Session or anything that is STATELESS API
 		http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
