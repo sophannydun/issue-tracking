@@ -63,7 +63,8 @@
 										<div class="panel panel-default">
 											<!-- 	<div class="panel-heading">Basic Form Elements</div> -->
 											<div class="panel-body">
-												<form th:action="@{/user/edit}" th:method="put" th:object="${user}">
+												<form th:action="@{/user/edit}" th:method="put"
+													th:object="${user}">
 													<div class="row col-md-12">
 														<div class="row col-md-4">
 															<div class="form-group">
@@ -77,8 +78,17 @@
 														<div class="row col-md-4">
 															<div class="form-group">
 																<label class="control-label col-md-5 col-sm-3 col-xs-12">Department
-																	ID:</label><input type="text" class="form-control"
-																	id="departmentId" th:value="*{departmentId}" name="departmentId">
+																	:</label> <select class="form-control" name="departmentId">
+																	<!-- <option>Choose Department</option> -->
+																	<option th:each="department: ${departments}"
+																		th:value="${department.departmentId}"
+																		th:text="${department.departmentId} + '-' + ${department.description}">IT
+																		Department</option>
+
+																</select>
+																<!-- <input type="text" class="form-control"
+																	id="departmentId" th:value="*{departmentId}"
+																	name="departmentId"></input> -->
 															</div>
 														</div>
 													</div>
@@ -97,8 +107,8 @@
 
 																<label class="control-label col-md-5 col-sm-3 col-xs-12"
 																	for="username">User Name:</label> <input type="text"
-																	class="form-control" id="username" th:value="*{username}"
-																	name="username">
+																	class="form-control" id="username"
+																	th:value="*{username}" name="username">
 															</div>
 														</div>
 													</div>
@@ -129,8 +139,9 @@
 													<div class="row col-md-12">
 														<div class="row col-md-4">
 															<div class="form-group">
-																<label class="control-label col-md-5 col-sm-3 col-xs-12" for="createby">All
-																	Roles:</label> <select multiple size="3" class="form-control" name="roleIds">
+																<label class="control-label col-md-5 col-sm-3 col-xs-12"
+																	for="createby">All Roles:</label> <select multiple
+																	size="3" class="form-control" name="roleIds">
 																	<!-- <option>Choose Roles:</option> -->
 																	<option th:each="r : ${roles}" th:value="${r.roleid}"
 																		th:text="${r.role}">Role</option>
@@ -141,8 +152,9 @@
 													<div class="row col-md-12">
 														<div class="row col-md-4">
 															<div class="form-group">
-																<label class="control-label col-md-5 col-sm-3 col-xs-12">Password</label><input type="text" class="form-control"
-																	id="password" value="12345" name="password">
+																<label class="control-label col-md-5 col-sm-3 col-xs-12">Password</label><input
+																	type="text" class="form-control" id="password"
+																	value="12345" name="password">
 															</div>
 														</div>
 													</div>
@@ -152,7 +164,8 @@
 																<label class="control-label col-md-5 col-sm-3 col-xs-12"
 																	for="createby">Create By:</label> <input type="text"
 																	class="form-control" id="createby"
-																	th:value="*{createBy}" name="createBy">
+																	th:value="*{createBy}" name="createBy"
+																	th:value="${loginUser.userId}" readonly>
 															</div>
 														</div>
 													</div>
@@ -162,7 +175,8 @@
 																<label class="control-label col-md-5 col-sm-3 col-xs-12"
 																	for="createby">Update By:</label> <input type="text"
 																	class="form-control" id="updateby"
-																	th:value="*{updateBy}" name="updateBy">
+																	th:value="*{updateBy}" name="updateBy"
+																	th:value="${loginUser.userId}" readonly>
 															</div>
 														</div>
 													</div>
@@ -173,7 +187,9 @@
 																<label class="control-label col-md-5 col-sm-3 col-xs-12"
 																	for="createby">Create Date:</label> <input type="text"
 																	class="form-control" id="createdate"
-																	th:value="*{createDate}" name="createDate">
+																	th:value="*{createDate}" name="createDate"
+																	th:value="${#dates.format(#dates.createNow(),'YYYY-MM-dd HH:mm a')}"
+																	readonly>
 
 															</div>
 														</div>
@@ -184,15 +200,18 @@
 																<label class="control-label col-md-5 col-sm-3 col-xs-12"
 																	for="createby">Update Date:</label> <input type="text"
 																	class="form-control" id="updatedate"
-																	th:value="*{updateDate}" name="updateDate">
+																	th:value="*{updateDate}" name="updateDate"
+																	th:value="${#calendars.format(#calendars.createNow(), 'dd-MMM-yyyy HH:mm a')}"
+																	readonly>
 															</div>
 														</div>
 													</div>
 													<div class="row col-md-12">
 														<div class="row col-md-6 col-offset-1">
 															<div class="form-group">
-																<span class="col-md-2 col-sm-3"> 
-																<input class="btn btn-primary btn-sm" type="submit" value="Update" />
+																<span class="col-md-2 col-sm-3"> <input
+																	class="btn btn-primary btn-sm" type="submit"
+																	value="Update" />
 																</span> <span class="col-md-3 col-sm-3"> <a
 																	class="btn btn-primary btn-sm" th:href="@{/user}">Users
 																		List</a>
