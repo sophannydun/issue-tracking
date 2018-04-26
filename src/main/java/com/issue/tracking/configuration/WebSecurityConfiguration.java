@@ -8,6 +8,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
 //enable web security
 @Configuration
@@ -17,6 +18,9 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 	@Autowired
 	private UserDetailsService userDetailsService;
 
+	@Autowired
+	private AuthenticationSuccessHandler successHandler;
+
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 
@@ -25,33 +29,52 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		// redirect user to formLogin if user trying to access protected resource
+		// redirect user to formLogin if user trying to access protected
+		// resource
 
 		// To open from login
-		/*http.formLogin()
-				.usernameParameter("username")
-				.passwordParameter("password")
+		http.formLogin()
+				 /*disabled .usernameParameter and .passwordParameter coz it is default
+				if wrong binding name mush enable both*/
+				// .usernameParameter("username")
+				// .passwordParameter("password")
+		
 				// custom login page
-				.loginPage("/login").permitAll();*/
-		//logout
-				/*http.logout()
-					.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-					.logoutSuccessUrl("/");*/
+				.loginPage("/login").permitAll()
+				/*
+				 * If .defaultSuccessUrl is not working must implement from
+				 * SuccessHandler interface
+				 * 
+				 * @Autowired private AuthenticationSuccessHandler
+				 * successHandler;
+				 */
+				// .defaultSuccessUrl("/index1")
+				.successHandler(successHandler);
+		// logout
+		/*
+		 * http.logout() .logoutRequestMatcher(new
+		 * AntPathRequestMatcher("/logout")) .logoutSuccessUrl("/");
+		 */
 
-		// Enable Basic Web Security authentication
-		http.httpBasic();
-		// disable token generate from server for client that don't have token like
-		// mobile for web service
+		/******
+		 * API only ***** Enable Basic Web Security authentication
+		 */
+		// http.httpBasic();
+
+		/*
+		 * disable token generate from server for client that don't have token
+		 * like mobile for web service
+		 */
 		http.csrf().disable();
+
 		// secure end point URL
 
-		http.authorizeRequests()
-								.anyRequest()
-								.authenticated();
-		/*.antMatchers("/api/**").hasRole("admin");*/
+		http.authorizeRequests().anyRequest().authenticated();
+		/* .antMatchers("/api/**").hasRole("admin"); */
 
-
-		// API not Store Session or anything that is STATELESS API
-		http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+		/***** Below use only with API ***** API not Store Session or anything that
+		 * is STATELESS API
+		 * http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+		 */
 	}
 }
