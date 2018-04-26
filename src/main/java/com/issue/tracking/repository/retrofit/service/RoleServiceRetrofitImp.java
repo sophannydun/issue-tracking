@@ -29,7 +29,7 @@ public class RoleServiceRetrofitImp {
 		Response<List<Role>> jsonRole = roleServiceRetrofit.getAllRoles().execute();
 		List<Role> roles = jsonRole.body();
 		for (Role role : roles) {
-			System.out.println(role.toString());
+			System.out.println("Client Get All Roles -> " + role.toString());
 		}
 		return roles;
 		// System.out.println(roles);

@@ -9,19 +9,17 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Role | IssueTracking</title>
+<title>Branch | IssueTracking</title>
 </head>
 
 <body class="nav-md">
 	<div class="container body">
 		<div class="main_container">
-
-			page content
 			<div class="right_col" role="main" layout:fragment="content">
 				<div class="">
 					<div class="page-title">
 						<div class="title_left">
-							<h3>Role</h3>
+							<h3>Branch</h3>
 						</div>
 
 						<div class="title_right">
@@ -43,7 +41,7 @@
 							<div class="x_panel">
 								<div class="x_title">
 									<h2>
-										Detail Role Information <small>Detail Role</small>
+										Detail Branch Information <small>Detail Branch</small>
 									</h2>
 									<ul class="nav navbar-right panel_toolbox">
 										<li><a class="collapse-link"><i
@@ -62,52 +60,58 @@
 								</div>
 								<div class="x_content">
 									<div class="container">
-										<form class="form-horizontal" action="#">
-											<div class="form-group" th:object="${role}">
-												<label class="control-label col-sm-2" for="roleid">Role ID:</label>
+										<form class="form-horizontal" action="#" th:object="${branch}">
+											<div class="form-group" >
+												<label class="control-label col-sm-2" for="branchId">Branch ID:</label>
 												<div class="col-sm-10">
-													<input type="text" class="form-control" id="roleid" th:value="*{roleid}" name="roleid" readonly>
+													<input type="text" class="form-control" id="branchId" th:value="*{branchId}" name="branchId" readonly>
 												</div>
 											</div>
 											<div class="form-group">
-												<label class="control-label col-sm-2" for="role">Role:</label>
+												<label class="control-label col-sm-2" for="branchName">Branch :</label>
 												<div class="col-sm-10">
-													<input type="text" class="form-control" id="role"
-														th:value="${role.role}" name="role" readonly>
+													<input type="text" class="form-control" id="branchName"
+														th:value="*{branchName}" name="branchName" readonly>
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="control-label col-sm-2" for="branchCode">Branch Code  :</label>
+												<div class="col-sm-10">
+													<span th:text="*{branchCode}" class="label label-success">Success Label</span>
 												</div>
 											</div>
 											<div class="form-group">
 												<label class="control-label col-sm-2" for="createby">Create By:</label>
 												<div class="col-sm-10">
-													<input type="text" class="form-control" id="createby"
-														th:value="${role.createby}" name="createby" readonly>
+													<input type="text" class="form-control" id="createBy"
+														th:value="*{createBy}" name="createBy" readonly>
 												</div>
 											</div>
 											<div class="form-group">
-												<label class="control-label col-sm-2" for="updateby">Update By:</label>
+												<label class="control-label col-sm-2" for="createby">Update By:</label>
 												<div class="col-sm-10">
-													<input type="text" class="form-control" id="updateby"
-														th:value="${role.updateby}" name="updateby" readonly>
+													<input type="text" class="form-control" id="updateBy"
+														th:value="*{updateBy}" name="updateBy" readonly>
 												</div>
 											</div>
 												<div class="form-group">
-												<label class="control-label col-sm-2" for="createdate">Create Date:</label>
+												<label class="control-label col-sm-2" for="createDate">Create Date:</label>
 												<div class="col-sm-10">
-													<input type="text" class="form-control" id="createdate"
-														th:value="${role.createdate}" name="createdate" readonly>
+													<input type="text" class="form-control" id="createDate"
+														th:value="*{createDate}" name="createDate" readonly>
 												</div>
 											</div>
 											<div class="form-group">
-												<label class="control-label col-sm-2" for="updatedate">Update Date:</label>
+												<label class="control-label col-sm-2" for="updateDate">Update Date:</label>
 												<div class="col-sm-10">
-													<input type="text" class="form-control" id="updatedate"
-														th:value="${role.updatedate}" name="updatedate" readonly>
+													<input type="text" class="form-control" id="updateDate"
+														th:value="*{updateDate}" name="updateDate" readonly>
 												</div>
 											</div>
 											<div class="form-group">
 												<div class="col-sm-offset-2 col-sm-10">
-													<a th:href="@{/roles/edit/{id}(id=${role.roleid})}" class="btn btn-warning btn-sm">Edit Role</a>
-													<a class="btn btn-default btn-sm" th:href="@{/roles}">Roles List</a>
+													<a th:href="@{/branch/edit/{branchId}(branchId=${branch.branchId})}" class="btn btn-warning btn-sm">Edit Branch</a>
+													<a class="btn btn-default btn-sm" th:href="@{/branch}">Branch List</a>
 												</div>
 											</div>
 										</form>

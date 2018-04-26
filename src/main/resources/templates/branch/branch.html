@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layouts/default">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Branch | IssueTracking</title>
+</head>
+
+<body class="nav-md">
+	<div class="container body">
+		<div class="main_container">
+
+			<!-- page content -->
+			<div class="right_col" role="main" layout:fragment="content">
+				<div class="">
+					<div class="page-title">
+						<div class="title_left">
+							<h3>Branch List</h3>
+						</div>
+
+						<div class="title_right">
+							<div
+								class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+								<div class="input-group">
+									<input type="text" class="form-control"
+										placeholder="Search for..."> <span
+										class="input-group-btn">
+										<button class="btn btn-default" type="button">Go!</button>
+									</span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="clearfix"></div>
+					<div class="row">
+						<div class="col-md-12 col-sm-12 col-xs-12">
+							<div class="x_panel">
+								<div class="x_title">
+									<h2>
+										Branch information <small>List down all Branch information</small>
+									</h2>
+									<ul class="nav navbar-right panel_toolbox">
+										<li><a class="collapse-link"><i
+												class="fa fa-chevron-up"></i></a></li>
+										<li class="dropdown"><a href="#" class="dropdown-toggle"
+											data-toggle="dropdown" role="button" aria-expanded="false"><i
+												class="fa fa-wrench"></i></a>
+											<ul class="dropdown-menu" role="menu">
+												<li><a href="#">Settings 1</a></li>
+												<li><a href="#">Settings 2</a></li>
+											</ul></li>
+										<li><a class="close-link"><i class="fa fa-close"></i></a>
+										</li>
+									</ul>
+									<div class="clearfix"></div>
+								</div>
+								<div class="x_content">
+									<a class="btn btn-default" href="/roles/addRole"><b>Add New Branch</b></a> 
+									<!-- <a class="btn btn-info" th:href="@{/roles/addRole}">Add New Role</a>  -->
+								<!-- 	<button type="button" class="btn btn-secondary">Secondary</button> -->
+									<br />
+									<!-- <form id="role-form" data-parsley-validate
+										class="form-horizontal form-label-left"> -->
+										<div class="x_content">
+											<!-- <p class="text-muted font-13 m-b-30">Responsive is an
+												extension for DataTables that resolves that problem by
+												optimising the table's layout for different screen sizes
+												through the dynamic insertion and removal of columns from
+												the table.</p> -->
+
+											<table id="datatable-responsives"
+												class="table table-hover table-striped table-bordered dt-responsive nowrap"
+												cellspacing="0" width="100%">
+												<thead>
+													<tr>
+														<th>Branch ID</th>
+														<th>Branch Name</th>
+														<th>Branch Code</th>
+														<th>Create By</th>
+														<th>Update By</th>
+														<th>Create Date</th>
+														<th>Update Date</th>
+														<th>Operation</th>
+													</tr>
+												</thead>
+												<tbody th:each="b: ${branches}">
+													<tr>
+														<td th:text="${b.branchId}">1</td>													
+														<td th:text="${b.branchName}">1</td>
+														<td><span th:text="${b.branchCode}" class="label label-success">Success Label</span></td>
+														<td th:text="${b.createBy}"></td>
+														<td th:text="${b.updateBy}">A</td>
+														<td th:text="${b.createDate}"></td>
+														<td th:text="${b.updateDate}"></td>
+													<td>
+														<div class="row">
+															<div class="col-xs-3 col-md-3">
+																<a class="btn btn-info btn-xs"
+																	th:href="@{/branch/{id}(id=${b.branchId})}">View</a>
+															</div>
+															<div class="col-xs-3 col-md-3">
+															<!-- calling RoleController call RoleServiceImp via PathVariable that calling API @PathVariable in Retrofit use @Path -->
+															<form th:action="@{/branch/remove/{branchId}(branchId=${b.branchId})}"
+																th:method="delete">
+																<input class="btn btn-danger btn-xs" type="submit"
+																	value="Delete" />
+															</form>
+															</div>
+
+															<!-- calling RoleController call RoleServiceImp via RequestParam that calling API @RequestParam in Retrofit use @Query -->
+															<!-- <form th:action="@{/roles/remove}" th:method="delete">
+																	<input type="hidden" name="id" th:value="${r.roleid}"/> because it is the id parameter, if we don't send id how can we remove
+																	<input class="btn btn-danger btn-sm" type="submit" value="Test" />
+																</form> -->
+															<!-- redirect form use @RequestParam -->
+															<!-- <a class="btn btn-warning btn-sm"
+																	th:href="@{/role/edit(id=${r.roleid})}">Edit</a>  -->
+															<div class="col-xs-3 col-md-3">
+															<a class="btn btn-warning btn-xs"
+																th:href="@{/branch/edit/{branchId}(branchId=${b.branchId})}">Edit</a>
+															</div>
+															
+														</div>
+													</td>
+												</tr>
+												</tbody>
+											</table>
+										</div>
+									<!-- 	</form> -->
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		<!-- 	/page content -->
+		</div>
+	</div>
+</body>
+</html>
