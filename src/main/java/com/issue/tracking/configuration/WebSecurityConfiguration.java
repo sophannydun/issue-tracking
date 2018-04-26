@@ -28,39 +28,11 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 		// redirect user to formLogin if user trying to access protected resource
 
 		// To open from login
-
-		// logout
-		/*
-		 * http.logout() .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-		 * .logoutSuccessUrl("/");
-		 */
-
-		/*
-		 * http.formLogin() .usernameParameter("username")
-		 * .passwordParameter("password") // custom login page
-		 * .loginPage("/login").permitAll();
-		 */
-
-
-		// logout
-		/*
-		 * http.logout() .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-		 * .logoutSuccessUrl("/");
-		 * 
-		 * // Enable Basic Web Security authentication http.httpBasic(); // disable
-		 * token generate from server for client that don't have token like // mobile
-		 * for web service http.csrf().disable(); // secure end point URL
-		 * 
-		 * http.authorizeRequests() .anyRequest() .authenticated();
-		 * /*.antMatchers("/api/**").hasRole("admin");
-		 */
-
 		/*http.formLogin()
 				.usernameParameter("username")
 				.passwordParameter("password")
 				// custom login page
 				.loginPage("/login").permitAll();*/
-		
 		//logout
 				/*http.logout()
 					.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
