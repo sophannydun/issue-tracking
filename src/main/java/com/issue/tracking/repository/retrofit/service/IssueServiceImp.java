@@ -36,4 +36,21 @@ public class IssueServiceImp implements IssueService {
 		
 		return issues;
 	}
+
+	@Override
+	public Boolean createIssue(Issue issue) {
+		Response<Boolean> jsonIssue = null;
+		Boolean createIssue=false;
+		try {
+			jsonIssue = this.IssueServiceClient.createIssue(issue).execute();
+			createIssue=jsonIssue.body();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		System.out.println("Client Service Create issue Status ->" + createIssue );
+		return createIssue;
+	}
+
+	
 }

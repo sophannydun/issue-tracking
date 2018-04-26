@@ -1,5 +1,6 @@
 package com.issue.tracking.controller;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,9 +8,12 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import com.issue.tracking.model.Department;
 import com.issue.tracking.model.Issue;
+import com.issue.tracking.model.Role;
 import com.issue.tracking.model.User;
 import com.issue.tracking.repository.retrofit.service.DepartmentService;
 import com.issue.tracking.repository.retrofit.service.IssueService;
@@ -59,6 +63,14 @@ public class IssueController {
 		System.out.println(departmentService.getAllDepartment());
 		System.out.println( issueTypeService.getAllIssueType());
 		return "issue/createissue";
+	}
+	
+	@PostMapping("/issues/addIssue")
+	public String actionAddIssue(Issue issue) throws IOException {
+		Boolean status = issueService.createIssue(issue);
+		System.out.println(status + " Created " + issue);
+		// redirect to mapped /issues
+		return "redirect:/issues";
 	}
 
 }
