@@ -1,13 +1,20 @@
 package com.issue.tracking.controller;
 
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.issue.tracking.model.User;
 
 @Controller
 public class HomeController {
 
 	@RequestMapping("/")
-	public String home() {
+	public String home(Model model) {
+		User loginUser = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+	      /*String name = user.getUsername(); //get logged in username*/
+		model.addAttribute("loginUser", loginUser);
 		return "home/index";
 	}
     

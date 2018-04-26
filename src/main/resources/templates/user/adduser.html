@@ -76,18 +76,33 @@
 													<div class="row col-md-12">
 														<div class="row col-md-4">
 															<div class="form-group">
-																<label class="control-label col-md-5 col-sm-3 col-xs-12">Department
-																	ID:</label><input type="text" class="form-control"
-																	id="departmentId" value="1" name="departmentId">
+																<label class="control-label col-md-5 col-sm-3 col-xs-12">Department :</label> <select class="form-control" name="departmentId">
+																	<!-- <option>Choose Department</option> -->
+																	<option th:each="department: ${departments}"
+																		th:value="${department.departmentId}"
+																		th:text="${department.departmentId} + '-' + ${department.description}">IT
+																		Department</option>
+
+																</select>
+																 <!-- <input type="text" class="form-control"
+																	id="departmentId" value="1" name="departmentId"> -->
 															</div>
 														</div>
 													</div>
 													<div class="row col-md-12">
 														<div class="row col-md-4">
 															<div class="form-group">
-																<label class="control-label col-md-5 col-sm-3 col-xs-12">Branch
-																	ID:</label><input type="text" class="form-control"
-																	id="branchId" value="1" name="branchId">
+																<label class="control-label col-md-5 col-sm-3 col-xs-12">Branch :</label>
+																<select class="form-control" name="branchId">
+																	<!-- <option>Choose Department</option> -->
+																	<option th:each="branch: ${branches}"
+																		th:value="${branch.branchId}"
+																		th:text="${branch.branchId} + '-' + ${branch.branchName}">IT
+																		Department</option>
+
+																</select>
+																<!-- <input type="text" class="form-control"
+																	id="branchId" value="1" name="branchId"> -->
 															</div>
 														</div>
 													</div>
@@ -116,8 +131,9 @@
 													<div class="row col-md-12">
 														<div class="row col-md-4">
 															<div class="form-group">
-																<label class="control-label col-md-5 col-sm-3 col-xs-12">Password</label><input type="text" class="form-control"
-																	id="password" value="12345" name="password">
+																<label class="control-label col-md-5 col-sm-3 col-xs-12">Password</label><input
+																	type="text" class="form-control" id="password"
+																	value="12345" name="password">
 															</div>
 														</div>
 													</div>
@@ -126,7 +142,8 @@
 															<div class="form-group">
 																<label class="control-label col-md-5 col-sm-3 col-xs-12"
 																	for="createby">Create By:</label> <input type="text"
-																	class="form-control" id="createBy" name="createBy">
+																	class="form-control" id="createBy" name="createBy"
+																	th:value="${loginUser.userId}" readonly>
 															</div>
 														</div>
 													</div>
@@ -135,7 +152,8 @@
 															<div class="form-group">
 																<label class="control-label col-md-5 col-sm-3 col-xs-12"
 																	for="createby">Update By:</label> <input type="text"
-																	class="form-control" id="updateBy" name="updateBy">
+																	class="form-control" id="updateBy" name="updateBy"
+																	th:value="${loginUser.userId}" readonly>
 															</div>
 														</div>
 													</div>
@@ -145,7 +163,9 @@
 															<div class="form-group">
 																<label class="control-label col-md-5 col-sm-3 col-xs-12"
 																	for="createby">Create Date:</label> <input type="text"
-																	class="form-control" id="createDate" name="createDate">
+																	class="form-control" id="createDate" name="createDate"
+																	th:value="${#calendars.format(#calendars.createNow(), 'dd-MMM-yyyy HH:mm a')}"
+																	readonly>
 
 															</div>
 														</div>
@@ -155,7 +175,9 @@
 															<div class="form-group">
 																<label class="control-label col-md-5 col-sm-3 col-xs-12"
 																	for="createby">Update Date:</label> <input type="text"
-																	class="form-control" id="updateDate" name="updateDate">
+																	class="form-control" id="updateDate" name="updateDate"
+																	th:value="${#dates.format(#dates.createNow(),'YYYY-MM-dd HH:mm a')}"
+																	readonly>
 															</div>
 														</div>
 													</div>

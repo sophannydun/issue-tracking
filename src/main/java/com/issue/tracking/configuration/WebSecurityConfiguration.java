@@ -29,11 +29,11 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 		// redirect user to formLogin if user trying to access protected resource
 		
 		// To open from login
-		http.formLogin()
+		/*http.formLogin()
 				.usernameParameter("username")
 				.passwordParameter("password")
 				// custom login page
-				.loginPage("/login").permitAll();
+				.loginPage("/login").permitAll();*/
 		
 		//logout
 			/*	http.logout()

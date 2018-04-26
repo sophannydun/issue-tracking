@@ -5,6 +5,7 @@ import static org.assertj.core.api.Assertions.setMaxElementsForPrinting;
 import java.io.IOException;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -15,83 +16,98 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.issue.tracking.model.Role;
+import com.issue.tracking.model.User;
 import com.issue.tracking.repository.retrofit.repository.RoleServiceRetrofit;
 import com.issue.tracking.repository.retrofit.service.RoleServiceRetrofitImp;
 
 @Controller
 public class RoleController {
-	
+
 	@Autowired
 	private RoleServiceRetrofitImp roleServiceRetrofit;
 	List<Role> roles;
+
 	@GetMapping("/roles")
-	public String RolePage(Model model) throws IOException{
-			roles=roleServiceRetrofit.getAllRoles();
-			model.addAttribute("roles", roles);
+	public String RolePage(Model model) throws IOException {
+		User loginUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		/* String name = user.getUsername(); //get logged in username */
+		model.addAttribute("loginUser", loginUser);
+		roles = roleServiceRetrofit.getAllRoles();
+		model.addAttribute("roles", roles);
 		return "role/role";
-		
+
 	}
-	
+
 	@GetMapping("/roles/{id}")
-	public String findRoleById(@PathVariable("id") Integer id,Model model) throws IOException{
-		Role role=roleServiceRetrofit.findRoleById(id);
-		if(role==null){
-			model.addAttribute("role",new Role());
+	public String findRoleById(@PathVariable("id") Integer id, Model model) throws IOException {
+		Role role = roleServiceRetrofit.findRoleById(id);
+		User loginUser = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+	      /*String name = user.getUsername(); //get logged in username*/
+		model.addAttribute("loginUser", loginUser);
+		if (role == null) {
+			model.addAttribute("role", new Role());
 		}
 		model.addAttribute("role", role);
-		
+
 		return "/role/roledetail";
 	}
-	
-	
-	
+
 	@DeleteMapping("/roles/remove/{id}")
-	public String removeRole(@PathVariable("id") Integer id) throws IOException{
-		Boolean status=false;
-		System.out.println(status +" Removed "+ id);
-		status=roleServiceRetrofit.removeRoleById(id);
-		System.out.println(status +" Removed "+ id);
+	public String removeRole(@PathVariable("id") Integer id) throws IOException {
+		Boolean status = false;
+		System.out.println(status + " Removed " + id);
+		status = roleServiceRetrofit.removeRoleById(id);
+		System.out.println(status + " Removed " + id);
 		return "redirect:/roles";
 	}
 	// retrofit with api
 	// form with controler
-	
-	//calling RoleServiceRetrofit via RequestParam that calling API @RequestParam in Retrofit use @Query
-	/*@DeleteMapping("/roles/remove")
-	public String removeRole(@RequestParam("id") Integer id) throws IOException{
-		Boolean status=false;
-		System.out.println(status +" Removed "+ id);
-		status=roleServiceRetrofit.removeRoleById(id);
-		System.out.println(status +" Removed "+ id);
-		return "redirect:/roles";
-	}*/
-	
+
+	// calling RoleServiceRetrofit via RequestParam that calling API
+	// @RequestParam in Retrofit use @Query
+	/*
+	 * @DeleteMapping("/roles/remove") public String
+	 * removeRole(@RequestParam("id") Integer id) throws IOException{ Boolean
+	 * status=false; System.out.println(status +" Removed "+ id);
+	 * status=roleServiceRetrofit.removeRoleById(id); System.out.println(status
+	 * +" Removed "+ id); return "redirect:/roles"; }
+	 */
+
 	@GetMapping("/roles/addRole")
-	public String addRole(){
+	public String addRole(Model model) {
+		User loginUser = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+	      /*String name = user.getUsername(); //get logged in username*/
+		model.addAttribute("loginUser", loginUser);
 		return "/role/addRole";
 	}
+
 	@PostMapping("/roles/addRole")
-	public String actionAddRole(Role role) throws IOException{
-		Boolean status=roleServiceRetrofit.createRole(role);
-		System.out.println(status +" Created "+ role);
-		//redirect to mapped /roles
+	public String actionAddRole(Role role) throws IOException {
+		Boolean status = roleServiceRetrofit.createRole(role);
+		System.out.println(status + " Created " + role);
+		// redirect to mapped /roles
 		return "redirect:/roles";
 	}
+
 	@GetMapping("/roles/edit/{id}")
-	public String editRole(@PathVariable("id") Integer id,Model model) throws IOException{
-		Role role=roleServiceRetrofit.findRoleById(id);
-		if(role==null){
-			model.addAttribute("role",new Role());
+	public String editRole(@PathVariable("id") Integer id, Model model) throws IOException {
+		User loginUser = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+	      /*String name = user.getUsername(); //get logged in username*/
+		model.addAttribute("loginUser", loginUser);
+		Role role = roleServiceRetrofit.findRoleById(id);
+		if (role == null) {
+			model.addAttribute("role", new Role());
 		}
 		model.addAttribute("role", role);
-		
+
 		return "/role/editrole";
 	}
+
 	@PutMapping("/roles/edit")
-	public String actionEditRole(Role role) throws IOException{
-		Boolean status=roleServiceRetrofit.updateRoleById(role);
-		System.out.println(status +" Updated "+ role);
-		//redirect to mapped /roles
+	public String actionEditRole(Role role) throws IOException {
+		Boolean status = roleServiceRetrofit.updateRoleById(role);
+		System.out.println(status + " Updated " + role);
+		// redirect to mapped /roles
 		return "redirect:/roles";
 	}
 }

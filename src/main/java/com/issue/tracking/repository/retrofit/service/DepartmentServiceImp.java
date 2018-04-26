@@ -26,12 +26,14 @@ public class DepartmentServiceImp implements DepartmentService {
 	@Override
 	public List<Department> getAllDepartment() {
 		Response<List<Department>> jsonDepartment = null;
+		List<Department> departments =null;
 		try {
 			jsonDepartment = this.departmentServiceClient.getAllDepartment().execute();
+			departments= jsonDepartment.body();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		List<Department> departments = jsonDepartment.body();
+		
 		return departments;
 	}
 
