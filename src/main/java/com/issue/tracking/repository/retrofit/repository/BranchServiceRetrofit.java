@@ -23,7 +23,7 @@ public interface BranchServiceRetrofit {
 	@POST("/api/branch/add")
 	Call <Boolean> createBranch(@Body Branch branch);
 	
-	@PUT("/api/branch/update")
+	@PUT("/api/branch/edit")
 	Call <Boolean> updateBranchById(@Body Branch branch);
 
 	@DELETE("/api/branch/remove/{branchId}")

@@ -98,6 +98,7 @@ public class BranchServiceImp implements BranchService {
 		}
 		try {
 			jsonUpdate=branchServiceRetrofit.updateBranchById(branch).execute();
+			System.out.println("Json Update Status ->" + jsonUpdate);
 			updateStatus=jsonUpdate.body();
 		} catch (IOException e) {
 			System.out.println("Update Branch Failed!!!");

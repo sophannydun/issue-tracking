@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layouts/default">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!-- Meta, title, CSS, favicons, etc. -->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Branch | IssueTracking</title>
+</head>
+
+<body class="nav-md">
+	<div class="container body">
+		<div class="main_container">
+			<div class="right_col" role="main" layout:fragment="content">
+				<div class="">
+					<div class="page-title">
+						<div class="title_left">
+							<h3>Branch</h3>
+						</div>
+
+						<div class="title_right">
+							<div
+								class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+								<div class="input-group">
+									<input type="text" class="form-control"
+										placeholder="Search for..."> <span
+										class="input-group-btn">
+										<button class="btn btn-default" type="button">Go!</button>
+									</span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="clearfix"></div>
+					<div class="row">
+						<div class="col-md-12 col-sm-12 col-xs-12">
+							<div class="x_panel">
+								<div class="x_title">
+									<h2>
+										Update Branch Information <small>Update Branch</small>
+									</h2>
+									<ul class="nav navbar-right panel_toolbox">
+										<li><a class="collapse-link"><i
+												class="fa fa-chevron-up"></i></a></li>
+										<li class="dropdown"><a href="#" class="dropdown-toggle"
+											data-toggle="dropdown" role="button" aria-expanded="false"><i
+												class="fa fa-wrench"></i></a>
+											<ul class="dropdown-menu" role="menu">
+												<li><a href="#">Settings 1</a></li>
+												<li><a href="#">Settings 2</a></li>
+											</ul></li>
+										<li><a class="close-link"><i class="fa fa-close"></i></a>
+										</li>
+									</ul>
+									<div class="clearfix"></div>
+								</div>
+								<div class="x_content">
+									<div class="container">
+										<form class="form" th:action="@{/branch/edit}" th:method="put"
+											th:object="${branch}">
+											<div class="row col-md-12">
+												<div class="row col-md-4">
+													<div class="form-group">
+														<label class="control-label col-sm-5" for="branchId">Branch
+															ID:</label> <input type="text" class="form-control" id="branchId"
+															th:value="*{branchId}" name="branchId" readonly>
+													</div>
+												</div>
+											</div>
+											<div class="row col-md-12">
+												<div class="row col-md-4">
+													<div class="form-group">
+														<label class="control-label col-sm-5" for="branchName">Branch
+															:</label> <input type="text" class="form-control" id="branchName"
+															th:value="*{branchName}" name="branchName">
+													</div>
+												</div>
+											</div>
+											<div class="row col-md-12">
+												<div class="row col-md-4">
+													<div class="form-group">
+														<label class="control-label col-sm-5" for="branchCode">Branch
+															Code :</label><input type="text" class="form-control"
+															id="branchCode" th:value="*{branchCode}"
+															name="branchCode">
+													</div>
+												</div>
+											</div>
+											<div class="row col-md-12">
+												<div class="row col-md-4">
+													<div class="form-group">
+														<label class="control-label col-sm-5" for="createby">Create
+															By:</label> <input type="text" class="form-control" id="createBy"
+															th:value="${loginUser.userId}" name="createBy" readonly>
+													</div>
+												</div>
+											</div>
+											<div class="row col-md-12">
+												<div class="row col-md-4">
+													<div class="form-group">
+														<label class="control-label col-sm-5" for="createby">Update
+															By:</label> <input type="text" class="form-control" id="updateBy"
+															th:value="${loginUser.userId}" name="updateBy" readonly>
+													</div>
+												</div>
+											</div>
+											<div class="row col-md-12">
+												<div class="row col-md-4">
+													<div class="form-group">
+														<label class="control-label col-sm-5" for="createDate">Create
+															Date:</label> <input type="text" class="form-control"
+															id="createDate" th:value="*{createDate}"
+															name="createDate" readonly>
+													</div>
+												</div>
+											</div>
+											<div class="row col-md-12">
+												<div class="row col-md-4">
+													<div class="form-group">
+														<label class="control-label col-sm-5" for="updateDate">Update
+															Date:</label> <input type="text" class="form-control"
+															id="updateDate"
+															th:value="${#dates.format(#dates.createNow(),'YYYY-MM-dd HH:mm a')}"
+															name="updateDate" readonly>
+													</div>
+												</div>
+											</div>
+											<div class="form-group">
+												<div class="col-sm-offset-2 col-sm-10">
+													<input class="btn btn-primary btn-sm" type="submit"
+														value="Update" /> <a class="btn btn-default btn-sm"
+														th:href="@{/branch}">Branch List</a>
+												</div>
+											</div>
+										</form>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+		/page content
+	</div>
+</body>
+</html>

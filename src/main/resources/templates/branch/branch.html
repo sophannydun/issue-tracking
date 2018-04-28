@@ -61,7 +61,7 @@
 									<div class="clearfix"></div>
 								</div>
 								<div class="x_content">
-									<a class="btn btn-default" href="/roles/addRole"><b>Add New Branch</b></a> 
+									<a class="btn btn-default" href="/branch/addBranch"><b>Add New Branch</b></a> 
 									<!-- <a class="btn btn-info" th:href="@{/roles/addRole}">Add New Role</a>  -->
 								<!-- 	<button type="button" class="btn btn-secondary">Secondary</button> -->
 									<br />
@@ -112,15 +112,6 @@
 																	value="Delete" />
 															</form>
 															</div>
-
-															<!-- calling RoleController call RoleServiceImp via RequestParam that calling API @RequestParam in Retrofit use @Query -->
-															<!-- <form th:action="@{/roles/remove}" th:method="delete">
-																	<input type="hidden" name="id" th:value="${r.roleid}"/> because it is the id parameter, if we don't send id how can we remove
-																	<input class="btn btn-danger btn-sm" type="submit" value="Test" />
-																</form> -->
-															<!-- redirect form use @RequestParam -->
-															<!-- <a class="btn btn-warning btn-sm"
-																	th:href="@{/role/edit(id=${r.roleid})}">Edit</a>  -->
 															<div class="col-xs-3 col-md-3">
 															<a class="btn btn-warning btn-xs"
 																th:href="@{/branch/edit/{branchId}(branchId=${b.branchId})}">Edit</a>
