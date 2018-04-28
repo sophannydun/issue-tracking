@@ -64,15 +64,16 @@
 								<div class="x_content">
 									<br />
 									<form id="demo-form2" data-parsley-validate
-										class="form-horizontal form-label-left" action="/issues/addIssue" method="post">
+										class="form-horizontal form-label-left"
+										action="/issues/addIssue" method="post">
 										<div class="row">
 											<label class=" col-md-1 col-sm-1 col-xs-12" for="first-name">Issue
 												Title <span class="required">*</span>
 											</label>
 											<div
 												class="col-md-5 col-sm-5 col-xs-12 form-group has-feedback">
-												<input type="text" class="form-control " id="issueName" name="issueName"
-													placeholder="Issue Name">
+												<input type="text" class="form-control " id="issueName"
+													name="issueName" placeholder="Issue Name">
 											</div>
 
 											<label class=" col-md-1 col-sm-1 col-xs-12" for="first-name">Department
@@ -81,9 +82,11 @@
 											<div
 												class="col-md-5 col-sm-4 col-xs-12 form-group has-feedback">
 												<select class="form-control" name="departmentId">
-													<option >Choose Department</option>
-													<option  th:each="department: ${departments}" th:value="${department.departmentId}" th:text="${department.description}">IT Department</option>
-													
+													<option>Choose Department</option>
+													<option th:each="department: ${departments}"
+														th:value="${department.departmentId}"
+														th:text="${department.description}">IT Department</option>
+
 												</select>
 											</div>
 
@@ -103,46 +106,45 @@
 											</label>
 											<div
 												class="col-md-5 col-sm-4 col-xs-12 form-group has-feedback">
-												<select class="form-control" name="issueType">
+												<select class="form-control" name="issueTypeId">
 													<option>Choose IssueType</option>
-													<option th:each="issueType: ${issueType}" th:value="${issueType.issueTypeId}" th:text="${issueType.description}">Tricube</option>
-													
+													<option th:each="issueType: ${issueType}"
+														th:value="${issueType.issueTypeId}"
+														th:text="${issueType.description}">Tricube</option>
+
 												</select>
 											</div>
 
 
-											<label class=" col-md-1 col-sm-1 col-xs-12" for="first-name">Issue
-												Title <span class="required">*</span>
+											<label class=" col-md-1 col-sm-1 col-xs-12" for="first-name">Create
+												By <span class="required">*</span>
 											</label>
 											<div
 												class="col-md-5 col-sm-5 col-xs-12 form-group has-feedback">
-												<input type="text" class="form-control" id="inputSuccess3"
-													placeholder="Last Name"> <span
-													class="fa fa-user form-control-feedback right"
-													aria-hidden="true"></span>
+												<input type="text" class="form-control " id="userId"
+													name="userId" placeholder="Issue Date"
+													th:value="${loginUser.userId}" readonly>
 											</div>
 
-											<label class=" col-md-1 col-sm-1 col-xs-12" for="first-name">Description
-												<span class="required">*</span>
+											<label class=" col-md-1 col-sm-1 col-xs-12" for="first-name">Issue
+												Date <span class="required">*</span>
 											</label>
 											<div
-												class="col-md-5 col-sm-4 col-xs-12 form-group has-feedback">
-												<select class="form-control">
-													<option>Choose option</option>
-													<option>Option one</option>
-													<option>Option two</option>
-													<option>Option three</option>
-													<option>Option four</option>
-												</select>
+												class="col-md-5 col-sm-5 col-xs-12 form-group has-feedback">
+												<input type="text" class="form-control " id="issuedDate"
+													name="issuedDate" placeholder="Issue Date"
+													th:value="${#calendars.format(#calendars.createNow(), 'dd-MMM-yyyy HH:mm a')}"
+													readonly>
 											</div>
-
-
-
+											<div
+												class="col-md-5 col-sm-5 col-xs-12 form-group has-feedback">
+												<input type="text" class="form-control " id="updateDate"
+													name="updateDate" placeholder="update Date"
+													th:value="${#calendars.format(#calendars.createNow(), 'dd-MMM-yyyy HH:mm a')}"
+													readonly>
+											</div>	
 
 										</div>
-
-
-
 										<div class="ln_solid"></div>
 										<div class="form-group">
 											<div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
