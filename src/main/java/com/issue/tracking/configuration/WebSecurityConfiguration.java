@@ -85,8 +85,9 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 		// secure end point URL
 
-		http.authorizeRequests().anyRequest().authenticated();
-		/* .antMatchers("/api/**").hasRole("admin"); */
+		http.authorizeRequests().anyRequest().authenticated()
+		.antMatchers("/user/addUser").hasRole("ADMIN");;
+		 
 
 		/*****
 		 * Below use only with API ***** API not Store Session or anything that is
