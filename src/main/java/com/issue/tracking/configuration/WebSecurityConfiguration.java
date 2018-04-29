@@ -42,6 +42,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 		// To enable style
 		http
 			.authorizeRequests()
+			.antMatchers("/image/**").permitAll()
 			.antMatchers("/css/**").permitAll();
 		// To open from login	
 		http.formLogin()
