@@ -10,6 +10,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 //enable web security
 @Configuration
@@ -40,11 +41,8 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 		// resource
 
 		// To enable style
-		http
-			.authorizeRequests()
-			.antMatchers("/image/**").permitAll()
-			.antMatchers("/css/**").permitAll();
-		// To open from login	
+		http.authorizeRequests().antMatchers("/image/**").permitAll().antMatchers("/css/**").permitAll();
+		// To open from login
 		http.formLogin()
 				/*
 				 * disabled .usernameParameter and .passwordParameter coz it is default if wrong
@@ -56,7 +54,6 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 				// custom login page
 
 				.loginPage("/login").permitAll()
-				
 
 				/*
 				 * If .defaultSuccessUrl is not working must implement from SuccessHandler
@@ -67,10 +64,9 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 				// .defaultSuccessUrl("/index1")
 				.successHandler(successHandler);
 		// logout
-		/*
-		 * http.logout() .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-		 * .logoutSuccessUrl("/");
-		 */
+		http.logout()
+			.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+			.logoutSuccessUrl("/");
 
 		/******
 		 * API only ***** Enable Basic Web Security authentication
@@ -85,9 +81,8 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 		// secure end point URL
 
-		http.authorizeRequests().anyRequest().authenticated()
-		.antMatchers("/user/addUser").hasRole("ADMIN");;
-		 
+		http.authorizeRequests().anyRequest().authenticated().antMatchers("/user/addUser").hasRole("ADMIN");
+		;
 
 		/*****
 		 * Below use only with API ***** API not Store Session or anything that is
