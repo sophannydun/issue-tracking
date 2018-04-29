@@ -32,7 +32,10 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 	// To enable style
 	@Override
 	public void configure(WebSecurity web) throws Exception {
-		web.ignoring().antMatchers("/resources/static/**", "/resources/templates/**");
+		web.ignoring()
+		.antMatchers("/resources/static/**", "/resources/templates/**")
+		.antMatchers("/css/**")
+		;
 	}
 
 	@Override
@@ -41,7 +44,10 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 		// resource
 
 		// To enable style
-		http.authorizeRequests().antMatchers("/image/**").permitAll().antMatchers("/css/**").permitAll();
+		http.authorizeRequests()
+			.antMatchers("/image/**")
+			.permitAll().antMatchers("/css/**")
+			.permitAll();
 		// To open from login
 		http.formLogin()
 				/*
@@ -67,6 +73,15 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 		http.logout()
 			.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
 			.logoutSuccessUrl("/");
+		
+		//authorize url secure end point URL
+				http.authorizeRequests()
+					.antMatchers("/user/**").hasRole("ADMIN")
+					.antMatchers("/roles/**").hasRole("ADMIN")
+					.antMatchers("/role/**").hasRole("ADMIN")
+					.antMatchers("/branch/**").hasRole("ADMIN")
+					
+					.anyRequest().authenticated();
 
 		/******
 		 * API only ***** Enable Basic Web Security authentication
@@ -79,11 +94,9 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 		 */
 		http.csrf().disable();
 
-		// secure end point URL
+		
 
-		http.authorizeRequests().anyRequest().authenticated().antMatchers("/user/addUser").hasRole("ADMIN");
-		;
-
+	
 		/*****
 		 * Below use only with API ***** API not Store Session or anything that is
 		 * STATELESS API
