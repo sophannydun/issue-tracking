@@ -1,40 +1,64 @@
 package com.issue.tracking.model;
 
 public class Issue {
+	private int issueId;
+	private int issueTypeId;
+	private int userId;
+	private int departmentId;
 	private String issueName;
-
-	private String issueStatus;
-
-	private String userId;
-
-	private String categoryId;
-
-	private String issueId;
-
-	private String departmentId;
-
-	private String updateDate;
-
-	private String issuedDate;
-
 	private String issueDetail;
+	private String issuedDate;
+	private String updateDate;
+	private String issueStatus;
 
 	public Issue() {
 		super();
 	}
 
-	public Issue(String issueName, String issueStatus, String userId, String categoryId, String issueId,
-			String departmentId, String updateDate, String issuedDate, String issueDetail) {
+	public Issue(int issueId, int issueTypeId, int userId, int departmentId, String issueName, String issueDetail,
+			String issueDate, String updateDate, String issueStatus) {
 		super();
-		this.issueName = issueName;
-		this.issueStatus = issueStatus;
-		this.userId = userId;
-		this.categoryId = categoryId;
 		this.issueId = issueId;
+		this.issueTypeId = issueTypeId;
+		this.userId = userId;
 		this.departmentId = departmentId;
-		this.updateDate = updateDate;
-		this.issuedDate = issuedDate;
+		this.issueName = issueName;
 		this.issueDetail = issueDetail;
+		this.issuedDate = issueDate;
+		this.updateDate = updateDate;
+		this.issueStatus = issueStatus;
+	}
+
+	public int getIssueId() {
+		return issueId;
+	}
+
+	public void setIssueId(int issueId) {
+		this.issueId = issueId;
+	}
+
+	public int getIssueTypeId() {
+		return issueTypeId;
+	}
+
+	public void setIssueTypeId(int issueTypeId) {
+		this.issueTypeId = issueTypeId;
+	}
+
+	public int getUserId() {
+		return userId;
+	}
+
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}
+
+	public int getDepartmentId() {
+		return departmentId;
+	}
+
+	public void setDepartmentId(int departmentId) {
+		this.departmentId = departmentId;
 	}
 
 	public String getIssueName() {
@@ -45,44 +69,20 @@ public class Issue {
 		this.issueName = issueName;
 	}
 
-	public String getIssueStatus() {
-		return issueStatus;
+	public String getIssueDetail() {
+		return issueDetail;
 	}
 
-	public void setIssueStatus(String issueStatus) {
-		this.issueStatus = issueStatus;
+	public void setIssueDetail(String issueDetail) {
+		this.issueDetail = issueDetail;
 	}
 
-	public String getUserId() {
-		return userId;
+	public String getIssuedDate() {
+		return issuedDate;
 	}
 
-	public void setUserId(String userId) {
-		this.userId = userId;
-	}
-
-	public String getCategoryId() {
-		return categoryId;
-	}
-
-	public void setCategoryId(String categoryId) {
-		this.categoryId = categoryId;
-	}
-
-	public String getIssueId() {
-		return issueId;
-	}
-
-	public void setIssueId(String issueId) {
-		this.issueId = issueId;
-	}
-
-	public String getDepartmentId() {
-		return departmentId;
-	}
-
-	public void setDepartmentId(String departmentId) {
-		this.departmentId = departmentId;
+	public void setIssuedDate(String issueDate) {
+		this.issuedDate = issueDate;
 	}
 
 	public String getUpdateDate() {
@@ -93,27 +93,12 @@ public class Issue {
 		this.updateDate = updateDate;
 	}
 
-	public String getIssuedDate() {
-		return issuedDate;
+	public String getIssueStatus() {
+		return issueStatus;
 	}
 
-	public void setIssuedDate(String issuedDate) {
-		this.issuedDate = issuedDate;
-	}
-
-	public String getIssueDetail() {
-		return issueDetail;
-	}
-
-	public void setIssueDetail(String issueDetail) {
-		this.issueDetail = issueDetail;
-	}
-
-	@Override
-	public String toString() {
-		return "Issue [issueName=" + issueName + ", issueStatus=" + issueStatus + ", userId=" + userId + ", categoryId="
-				+ categoryId + ", issueId=" + issueId + ", departmentId=" + departmentId + ", updateDate=" + updateDate
-				+ ", issuedDate=" + issuedDate + ", issueDetail=" + issueDetail + "]";
+	public void setIssueStatus(String issueStatus) {
+		this.issueStatus = issueStatus;
 	}
 
 }

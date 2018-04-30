@@ -73,29 +73,28 @@
 												cellspacing="0" width="100%">
 												<thead>
 													<tr>
-														<th>issueID</th>
-														<th>categoryID</th>
-														<th>userID</th>
-														<th>departmentID</th>
-														<th>issueName</th>
-														<th>issueDetail</th>
-														<th>issueStatus</th>
-														<th>issuedDate</th>
-														<th>updateDate</th>
+														<th>issue ID</th>
+														<th>category ID</th>
+														<th>user ID</th>
+														<th>department ID</th>
+														<th>issue Name</th>
+														<th>issue Detail</th>
+														<th>issue Status</th>
+														<th>issued Date</th>
+														<th>update Date</th>
 													</tr>
 												</thead>
 												<tbody th:each="issue: ${issues}">
 													<tr>
 														<td th:text="${issue.issueId}">1</td>
-														<td th:text="${issue.categoryId}">1</td>
+														<td th:text="${issue.issueTypeId}">1</td>
 														<td th:text="${issue.userId}">1</td>
 														<td th:text="${issue.departmentId}">1</td>
 														<td th:text="${issue.issueName}">1</td>
 														<td th:text="${issue.issueDetail}">1</td>
 														<td th:text="${issue.issueStatus}">1</td>
-														<td th:text="${issue.updateDate}">1</td>
 														<td th:text="${issue.issuedDate}">1</td>
-
+														<td th:text="${issue.updateDate}">1</td>
 													</tr>
 												</tbody>
 											</table>
@@ -113,6 +112,6 @@
 		</div>
 	</div>
 
-	
+
 </body>
 </html>
