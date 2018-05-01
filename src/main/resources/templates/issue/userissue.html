@@ -78,6 +78,7 @@
 														<th>Comment</th>
 														<th>assigned To UserID</th>
 														<th>Approved Date</th>
+														<th>Action</th>
 													</tr>
 												</thead>
 												<tbody th:each="issue: ${issuesapprove}">
@@ -87,7 +88,17 @@
 														<td th:text="${issue.comment}">1</td>
 														<td th:text="${issue.assignedToUserId}">1</td>
 														<td th:text="${issue.approvedDate}">1</td>
-														
+														<td>
+														<form th:action="#" th:method="delete">										
+															<input type="hidden" name="_method" value="DELETE">
+															<a class="btn btn-default btn-xs"
+																th:href="@{/user/{id}(id=${loginUser.userId})}" >Approve</a> <span>
+																<input type="hidden" name="id" th:value="${loginUser.userId}" />
+																<input class="btn btn-danger btn-xs" type="submit"
+																value="Reject" />
+															</span>
+														</form>
+													</td>
 													</tr>
 												</tbody>
 											</table>
