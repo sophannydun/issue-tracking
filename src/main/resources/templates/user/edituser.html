@@ -70,7 +70,7 @@
 															<div class="form-group">
 																<label class="control-label col-md-5 col-sm-3 col-xs-12">User
 																	ID:</label><input type="text" class="form-control" id="userId"
-																	th:value="*{userId}" name="userId" readonly>
+																	th:value="*{userId}" name="userId" readonly >
 															</div>
 														</div>
 													</div>
@@ -96,8 +96,14 @@
 														<div class="row col-md-4">
 															<div class="form-group">
 																<label class="control-label col-md-5 col-sm-3 col-xs-12">Branch
-																	ID:</label><input type="text" class="form-control"
-																	id="branchId" th:value="*{branchId}" name="branchId">
+																	ID:</label><select class="form-control" name="branchId">
+																	<!-- <option>Choose Department</option> -->
+																	<option th:each="branch: ${branches}"
+																		th:value="${branch.branchId}"
+																		th:text="${branch.branchId} + '-' + ${branch.branchName}">IT
+																		Department</option>
+
+																</select>
 															</div>
 														</div>
 													</div>

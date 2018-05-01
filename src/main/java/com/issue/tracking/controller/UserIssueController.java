@@ -7,6 +7,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,6 +25,7 @@ public class UserIssueController {
 	@Autowired
 	private UserIssueService userIssueServiceImp;
 	
+	
 	/*@Autowired
 	private IssueServiceClient issueServiceClient;*/
 	@GetMapping("/issueapproval")
@@ -35,8 +37,7 @@ public class UserIssueController {
 		model.addAttribute("issuesapprove", issuesapprove);
 		return "issue/userissue";
 	}
-	
-	/*@PutMapping("/issueapproval")
+	/*@PutMapping("/approveissue")
 	public String actionLineMangerApproval(@RequestBody Issue issue,@RequestBody IssueApproval issueApproval){
 		issueServiceClient.lineManagerApproval(issue, issueApproval);
 		userIssueServiceImp.createIssueApproval(issueApproval);

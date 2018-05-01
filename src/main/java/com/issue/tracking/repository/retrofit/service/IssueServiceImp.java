@@ -7,8 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.issue.tracking.model.Issue;
+import com.issue.tracking.model.IssueApproval;
 import com.issue.tracking.repository.retrofit.repository.IssueServiceClient;
 
+import retrofit2.Call;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
@@ -50,6 +52,35 @@ public class IssueServiceImp implements IssueService {
 		}
 		System.out.println("Client Service Create issue Status ->" + createIssue );
 		return createIssue;
+	}
+
+	@Override
+	public Boolean lineManagerApproval(Issue issue, IssueApproval issueApproval) {
+		Response <Boolean> jsonLineApprove=null;
+		Boolean approveStatus=false;
+		try {
+			jsonLineApprove=IssueServiceClient.lineManagerApproval(issue, issueApproval).execute();
+			approveStatus=jsonLineApprove.body();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		System.out.println("Client Service Create issue Approve Status ->" + approveStatus );
+		return approveStatus;
+	}
+
+	@Override
+	public Issue findIssueById(Integer issueId) {
+		if(issueId==null){
+			return new Issue();
+		}
+		Issue issue=new Issue();
+		try {
+			Response<Issue> jsonIssue= IssueServiceClient.findIssueById(issueId).execute();
+			issue=jsonIssue.body();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return issue;
 	}
 
 	

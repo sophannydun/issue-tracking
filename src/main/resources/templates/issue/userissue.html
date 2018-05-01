@@ -92,7 +92,7 @@
 														<form th:action="#" th:method="delete">										
 															<input type="hidden" name="_method" value="DELETE">
 															<a class="btn btn-default btn-xs"
-																th:href="@{/user/{id}(id=${loginUser.userId})}" >Approve</a> <span>
+																th:href="@{/approveissue/{issueId}(issueId=${issue.issueId})}" >Approve</a> <span>
 																<input type="hidden" name="id" th:value="${loginUser.userId}" />
 																<input class="btn btn-danger btn-xs" type="submit"
 																value="Reject" />

@@ -11,11 +11,14 @@ import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
+import retrofit2.http.Path;
 
 public interface IssueServiceClient {
 	@GET("/api/issues")
 	Call<List<Issue>> getAllIssues();
 	
+	@GET("/api/issue/{issueId}")
+	Call <Issue> findIssueById(@Path(value = "issueId")  Integer issueId);
 	@POST("/api/issues")
 	Call<Boolean> createIssue(@Body Issue issue);
 	
